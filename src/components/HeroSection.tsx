@@ -30,27 +30,15 @@ const HeroSection = () => {
             Новый стандарт современной жизни
           </p>
 
-          {/* CTA with decorative line */}
-          <div className="mt-12 flex items-center gap-4 opacity-0 animate-fade-up delay-400">
-            {/* Decorative line extending from left edge */}
-            <div className="absolute left-0 h-px bg-gradient-to-r from-muted-foreground/50 via-muted-foreground to-muted-foreground w-[calc(50%-200px)] md:w-[calc(50%-280px)]" style={{ top: 'auto' }} />
-            <div className="relative flex items-center">
-              <div className="absolute right-full w-[40vw] h-px bg-muted-foreground/60 mr-4" />
-              <a href="#services" className="luxury-button">
-                Explore Services
-              </a>
-            </div>
+          {/* CTA */}
+          <div className="mt-12 flex flex-wrap gap-4 opacity-0 animate-fade-up delay-400">
+            <a href="#services" className="luxury-button">
+              Explore Services
+            </a>
             <a href="#contact" className="luxury-button-outline">
               Get in Touch
             </a>
           </div>
-        </div>
-
-        {/* Large PA text on right side */}
-        <div className="absolute right-8 md:right-16 bottom-24 md:bottom-32 opacity-20 pointer-events-none">
-          <span className="text-[120px] md:text-[200px] lg:text-[280px] font-display font-light tracking-tight text-foreground/30 leading-none">
-            PA
-          </span>
         </div>
 
         {/* Scroll Indicator */}
