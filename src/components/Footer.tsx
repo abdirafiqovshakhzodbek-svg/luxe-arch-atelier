@@ -5,8 +5,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#home" className="font-display text-2xl tracking-[0.3em] font-light text-foreground">
-              ARCHFORM
+            <a href="#home" className="font-display text-2xl tracking-[0.2em] font-light text-foreground">
+              Pixel Aurora
             </a>
             <p className="mt-6 text-muted-foreground font-light leading-relaxed max-w-md">
               Creating exceptional architectural experiences that redefine modern living. 
