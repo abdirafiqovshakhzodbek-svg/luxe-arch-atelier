@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#properties', label: 'Properties' },
-  { href: '#services', label: 'Services' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#contact', label: 'Contacts' },
+  { href: '#home', label: 'Главная' },
+  { href: '#about', label: 'О нас' },
+  { href: '#properties', label: 'Проекты' },
+  { href: '#services', label: 'Услуги' },
+  { href: '#gallery', label: 'Галерея' },
+  { href: '#contact', label: 'Контакты' },
 ];
 
 const Header = () => {

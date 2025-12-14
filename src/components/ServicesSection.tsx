@@ -6,26 +6,26 @@ import serviceSpace from '@/assets/service-space.jpg';
 const services = [
   {
     number: '01',
-    title: 'Property Showcase',
-    description: 'Presenting luxury properties with cinematic precision, capturing every architectural detail.',
+    title: 'Презентация объектов',
+    description: 'Представление элитной недвижимости с кинематографической точностью, запечатлевая каждую архитектурную деталь.',
     image: serviceShowcase,
   },
   {
     number: '02',
-    title: 'Site Planning',
-    description: 'Strategic land analysis and development planning for optimal architectural integration.',
+    title: 'Планирование участка',
+    description: 'Стратегический анализ земли и планирование застройки для оптимальной архитектурной интеграции.',
     image: servicePlanning,
   },
   {
     number: '03',
-    title: 'Building Design',
-    description: 'Creating distinctive structures that harmonize form, function, and environment.',
+    title: 'Проектирование зданий',
+    description: 'Создание уникальных сооружений, гармонично сочетающих форму, функцию и окружающую среду.',
     image: serviceDesign,
   },
   {
     number: '04',
-    title: 'Space Planning',
-    description: 'Optimizing interior layouts for enhanced flow, comfort, and aesthetic experience.',
+    title: 'Планировка пространства',
+    description: 'Оптимизация интерьерных решений для улучшенного потока, комфорта и эстетического восприятия.',
     image: serviceSpace,
   },
 ];
@@ -36,12 +36,12 @@ const ServicesSection = () => {
       <div className="luxury-container">
         {/* Section Header */}
         <div className="mb-16 md:mb-24">
-          <span className="luxury-number text-sm">Services</span>
+          <span className="luxury-number text-sm">Услуги</span>
           <h2 className="mt-4 text-display-lg luxury-heading">
-            Our Services
+            Наши услуги
           </h2>
           <p className="mt-6 text-muted-foreground font-light max-w-2xl leading-relaxed">
-            We offer comprehensive architectural and design services, transforming visions into exceptional living spaces.
+            Мы предлагаем комплексные архитектурные и дизайнерские услуги, превращая идеи в исключительные жилые пространства.
           </p>
         </div>
 
