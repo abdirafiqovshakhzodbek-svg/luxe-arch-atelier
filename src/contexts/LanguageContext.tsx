@@ -17,6 +17,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Services',
     'nav.gallery': 'Gallery',
     'nav.contact': 'Contacts',
+    'nav.request': 'Submit Request',
     
     // Hero
     'hero.title1': 'Architecture',
@@ -89,6 +90,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Услуги',
     'nav.gallery': 'Галерея',
     'nav.contact': 'Контакты',
+    'nav.request': 'Оставить заявку',
     
     // Hero
     'hero.title1': 'Архитектура',
@@ -161,6 +163,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Xizmatlar',
     'nav.gallery': 'Galereya',
     'nav.contact': 'Aloqa',
+    'nav.request': "So'rov qoldirish",
     
     // Hero
     'hero.title1': 'Arxitektura',
@@ -233,6 +236,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.services': 'Хизматлар',
     'nav.gallery': 'Галерея',
     'nav.contact': 'Алоқа',
+    'nav.request': 'Сўров қолдириш',
     
     // Hero
     'hero.title1': 'Архитектура',

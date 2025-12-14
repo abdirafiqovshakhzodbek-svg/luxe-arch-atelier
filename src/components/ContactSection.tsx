@@ -126,7 +126,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-section bg-background">
+    <section id="request" className="py-section bg-background">
       <div className="luxury-container">
         {/* Section Header */}
         <div className="text-center mb-16">

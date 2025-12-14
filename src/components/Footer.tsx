@@ -1,7 +1,21 @@
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Instagram, Send } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLanguage();
+
+  const socialLinks = [
+    {
+      name: 'Instagram',
+      href: 'https://instagram.com/pixel_aurora_architect',
+      icon: Instagram,
+    },
+    {
+      name: 'Telegram',
+      href: 'https://t.me/Pixel_Aurora_Architect',
+      icon: Send,
+    },
+  ];
 
   return (
     <footer id="contact" className="py-section bg-luxury-charcoal border-t border-border/20">
@@ -15,6 +29,22 @@ const Footer = () => {
             <p className="mt-6 text-muted-foreground font-light leading-relaxed max-w-md">
               {t('footer.brand.description')}
             </p>
+            
+            {/* Social Links */}
+            <div className="mt-6 flex items-center gap-4">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-border/30 text-muted-foreground hover:text-foreground hover:border-foreground/50 transition-all duration-300"
+                  aria-label={social.name}
+                >
+                  <social.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Navigation */}
