@@ -1,6 +1,9 @@
 import heroImage from '@/assets/hero-house.jpg';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
@@ -20,30 +23,30 @@ const HeroSection = () => {
         <div className="max-w-5xl">
           {/* Main Heading */}
           <h1 className="text-display-xl font-display font-light text-foreground uppercase tracking-wider opacity-0 animate-fade-up">
-            Архитектура
+            {t('hero.title1')}
             <br />
-            <span className="text-muted-foreground">Переосмыслена</span>
+            <span className="text-muted-foreground">{t('hero.title2')}</span>
           </h1>
           
           {/* Subtitle */}
           <p className="mt-8 text-lg md:text-xl text-muted-foreground font-light tracking-wide max-w-xl opacity-0 animate-fade-up delay-200">
-            Новый стандарт современной жизни
+            {t('hero.subtitle')}
           </p>
 
           {/* CTA */}
           <div className="mt-12 flex flex-wrap gap-4 opacity-0 animate-fade-up delay-400">
             <a href="#services" className="luxury-button">
-              Наши услуги
+              {t('hero.services')}
             </a>
             <a href="#contact" className="luxury-button-outline">
-              Связаться
+              {t('hero.contact')}
             </a>
           </div>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in delay-600">
-          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Листать</span>
+          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{t('hero.scroll')}</span>
           <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
         </div>
       </div>

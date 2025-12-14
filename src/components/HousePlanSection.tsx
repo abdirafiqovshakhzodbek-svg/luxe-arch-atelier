@@ -1,30 +1,33 @@
 import floorPlan from '@/assets/floor-plan.jpg';
-
-const rooms = [
-  { name: 'Гостиная', area: 45 },
-  { name: 'Главная спальня', area: 28 },
-  { name: 'Кухня', area: 22 },
-  { name: 'Столовая', area: 18 },
-  { name: 'Спальня 2', area: 16 },
-  { name: 'Спальня 3', area: 14 },
-  { name: 'Ванная', area: 12 },
-  { name: 'Терраса', area: 35 },
-];
-
-const totalArea = rooms.reduce((sum, room) => sum + room.area, 0);
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HousePlanSection = () => {
+  const { t } = useLanguage();
+
+  const rooms = [
+    { key: 'plan.room.living', area: 45 },
+    { key: 'plan.room.master', area: 28 },
+    { key: 'plan.room.kitchen', area: 22 },
+    { key: 'plan.room.dining', area: 18 },
+    { key: 'plan.room.bedroom2', area: 16 },
+    { key: 'plan.room.bedroom3', area: 14 },
+    { key: 'plan.room.bathroom', area: 12 },
+    { key: 'plan.room.terrace', area: 35 },
+  ];
+
+  const totalArea = rooms.reduce((sum, room) => sum + room.area, 0);
+
   return (
     <section id="properties" className="py-section bg-background">
       <div className="luxury-container">
         {/* Section Header */}
         <div className="mb-16 md:mb-24 text-center">
-          <span className="luxury-number text-sm">Избранный проект</span>
+          <span className="luxury-number text-sm">{t('plan.label')}</span>
           <h2 className="mt-4 text-display-lg luxury-heading">
-            План дома
+            {t('plan.title')}
           </h2>
           <p className="mt-6 text-muted-foreground font-light text-lg">
-            Площадь <span className="text-foreground">{totalArea} м²</span>
+            {t('plan.area')} <span className="text-foreground">{totalArea} м²</span>
           </p>
         </div>
 
@@ -35,7 +38,7 @@ const HousePlanSection = () => {
             <div className="space-y-1">
               {rooms.map((room, index) => (
                 <div
-                  key={room.name}
+                  key={room.key}
                   className="flex items-center justify-between py-4 border-b border-border/30 group hover:border-border transition-colors duration-300"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
@@ -44,7 +47,7 @@ const HousePlanSection = () => {
                       {String(index + 1).padStart(2, '0')}
                     </span>
                     <span className="text-foreground font-light tracking-wide group-hover:text-muted-foreground transition-colors">
-                      {room.name}
+                      {t(room.key)}
                     </span>
                   </div>
                   <span className="text-muted-foreground font-light tabular-nums">
@@ -57,7 +60,7 @@ const HousePlanSection = () => {
             {/* Total */}
             <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
               <span className="text-sm tracking-[0.15em] uppercase text-muted-foreground">
-                Общая площадь
+                {t('plan.totalArea')}
               </span>
               <span className="text-2xl font-display font-light text-foreground">
                 {totalArea} м²

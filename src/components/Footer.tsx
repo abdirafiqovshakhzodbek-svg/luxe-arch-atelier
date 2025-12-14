@@ -1,4 +1,8 @@
+import { useLanguage } from '@/contexts/LanguageContext';
+
 const Footer = () => {
+  const { t } = useLanguage();
+
   return (
     <footer id="contact" className="py-section bg-luxury-charcoal border-t border-border/20">
       <div className="luxury-container">
@@ -9,36 +13,35 @@ const Footer = () => {
               Pixel Aurora
             </a>
             <p className="mt-6 text-muted-foreground font-light leading-relaxed max-w-md">
-              Создаём исключительный архитектурный опыт, переосмысливающий современную жизнь. Каждый проект —
-              свидетельство точности, элегантности и инноваций.
+              {t('footer.brand.description')}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Навигация</h4>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t('footer.navigation')}</h4>
             <nav className="flex flex-col gap-3">
               <a href="#home" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                Главная
+                {t('nav.home')}
               </a>
               <a href="#about" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                О нас
+                {t('nav.about')}
               </a>
               <a href="#services" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                Услуги
+                {t('nav.services')}
               </a>
               <a href="#properties" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                Проекты
+                {t('nav.projects')}
               </a>
               <a href="#gallery" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                Галерея
+                {t('nav.gallery')}
               </a>
             </nav>
           </div>
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">Контакты</h4>
+            <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t('footer.contacts')}</h4>
             <div className="flex flex-col gap-3 text-foreground/80 font-light">
               <p>studio@pixelaurora.uz</p>
               <p>+998 90 125-48-68</p>
@@ -53,19 +56,19 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground tracking-wider">© 2025 Pixel Aurora. Все права защищены.</p>
+          <p className="text-xs text-muted-foreground tracking-wider">{t('footer.copyright')}</p>
           <div className="flex items-center gap-6">
             <a
               href="#"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wider"
             >
-              Политика конфиденциальности
+              {t('footer.privacy')}
             </a>
             <a
               href="#"
               className="text-xs text-muted-foreground hover:text-foreground transition-colors tracking-wider"
             >
-              Условия использования
+              {t('footer.terms')}
             </a>
           </div>
         </div>
