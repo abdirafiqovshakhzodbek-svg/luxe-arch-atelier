@@ -32,10 +32,9 @@ const Header = () => {
 
   const navLinks = [
     { href: '#home', label: t('nav.home') },
+    { href: '#about', label: t('nav.about') },
     { href: '#services', label: t('nav.services') },
-    { href: '#properties', label: t('nav.projects') },
     { href: '#request', label: t('nav.request') },
-    { href: '#contact', label: t('nav.contact') },
   ];
 
   const LanguageSwitcher = ({ className = '' }: { className?: string }) => (
