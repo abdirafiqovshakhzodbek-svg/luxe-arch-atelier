@@ -2,46 +2,49 @@ import serviceShowcase from '@/assets/service-showcase.jpg';
 import servicePlanning from '@/assets/service-planning.jpg';
 import serviceDesign from '@/assets/service-design.jpg';
 import serviceSpace from '@/assets/service-space.jpg';
-
-const services = [
-  {
-    number: '01',
-    title: 'Презентация объектов',
-    description: 'Представление элитной недвижимости с кинематографической точностью, запечатлевая каждую архитектурную деталь.',
-    image: serviceShowcase,
-  },
-  {
-    number: '02',
-    title: 'Планирование участка',
-    description: 'Стратегический анализ земли и планирование застройки для оптимальной архитектурной интеграции.',
-    image: servicePlanning,
-  },
-  {
-    number: '03',
-    title: 'Проектирование зданий',
-    description: 'Создание уникальных сооружений, гармонично сочетающих форму, функцию и окружающую среду.',
-    image: serviceDesign,
-  },
-  {
-    number: '04',
-    title: 'Планировка пространства',
-    description: 'Оптимизация интерьерных решений для улучшенного потока, комфорта и эстетического восприятия.',
-    image: serviceSpace,
-  },
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      number: '01',
+      titleKey: 'services.01.title',
+      descriptionKey: 'services.01.description',
+      image: serviceShowcase,
+    },
+    {
+      number: '02',
+      titleKey: 'services.02.title',
+      descriptionKey: 'services.02.description',
+      image: servicePlanning,
+    },
+    {
+      number: '03',
+      titleKey: 'services.03.title',
+      descriptionKey: 'services.03.description',
+      image: serviceDesign,
+    },
+    {
+      number: '04',
+      titleKey: 'services.04.title',
+      descriptionKey: 'services.04.description',
+      image: serviceSpace,
+    },
+  ];
+
   return (
     <section id="services" className="py-section bg-luxury-navy">
       <div className="luxury-container">
         {/* Section Header */}
         <div className="mb-16 md:mb-24">
-          <span className="luxury-number text-sm">Услуги</span>
+          <span className="luxury-number text-sm">{t('services.label')}</span>
           <h2 className="mt-4 text-display-lg luxury-heading">
-            Наши услуги
+            {t('services.title')}
           </h2>
           <p className="mt-6 text-muted-foreground font-light max-w-2xl leading-relaxed">
-            Мы предлагаем комплексные архитектурные и дизайнерские услуги, превращая идеи в исключительные жилые пространства.
+            {t('services.description')}
           </p>
         </div>
 
@@ -57,7 +60,7 @@ const ServicesSection = () => {
               <div className="relative h-64 md:h-80 overflow-hidden">
                 <img
                   src={service.image}
-                  alt={service.title}
+                  alt={t(service.titleKey)}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
@@ -74,12 +77,12 @@ const ServicesSection = () => {
                   <div>
                     <span className="luxury-number text-xs">{service.number}</span>
                     <h3 className="mt-2 text-xl md:text-2xl font-display font-light text-foreground tracking-wide">
-                      {service.title}
+                      {t(service.titleKey)}
                     </h3>
                   </div>
                 </div>
                 <p className="mt-4 text-muted-foreground font-light leading-relaxed">
-                  {service.description}
+                  {t(service.descriptionKey)}
                 </p>
               </div>
             </article>

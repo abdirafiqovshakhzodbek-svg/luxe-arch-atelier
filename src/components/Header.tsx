@@ -6,27 +6,19 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { useLanguage, Language } from '@/contexts/LanguageContext';
 
-const navLinks = [
-  { href: '#home', label: 'Главная' },
-  { href: '#about', label: 'О нас' },
-  { href: '#properties', label: 'Проекты' },
-  { href: '#services', label: 'Услуги' },
-  { href: '#gallery', label: 'Галерея' },
-  { href: '#contact', label: 'Контакты' },
-];
-
-const languages = [
-  { code: 'eng', label: 'ENG' },
-  { code: 'rus', label: 'RUS' },
-  { code: 'uzb-lat', label: 'UZB' },
+const languages: { code: Language; label: string }[] = [
+  { code: 'uzb', label: 'UZB' },
   { code: 'uzb-cyr', label: 'ЎЗБ' },
+  { code: 'rus', label: 'РУС' },
+  { code: 'eng', label: 'ENG' },
 ];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState('rus');
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,24 +28,35 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const currentLanguage = languages.find(l => l.code === currentLang);
+  const currentLanguage = languages.find(l => l.code === language);
+
+  const navLinks = [
+    { href: '#home', label: t('nav.home') },
+    { href: '#about', label: t('nav.about') },
+    { href: '#properties', label: t('nav.projects') },
+    { href: '#services', label: t('nav.services') },
+    { href: '#gallery', label: t('nav.gallery') },
+    { href: '#contact', label: t('nav.contact') },
+  ];
 
   const LanguageSwitcher = ({ className = '' }: { className?: string }) => (
     <DropdownMenu>
-      <DropdownMenuTrigger className={`flex items-center gap-1 text-xs tracking-widest font-light text-foreground/80 hover:text-foreground transition-colors duration-300 focus:outline-none ${className}`}>
+      <DropdownMenuTrigger className={`flex items-center gap-1 text-xs tracking-widest font-medium text-foreground/90 hover:text-foreground transition-colors duration-300 focus:outline-none ${className}`}>
         {currentLanguage?.label}
         <ChevronDown className="w-3 h-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end" 
-        className="min-w-[100px] bg-white/90 backdrop-blur-md border border-border/30 shadow-lg"
+        className="min-w-[100px] bg-luxury-charcoal/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl"
       >
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setCurrentLang(lang.code)}
-            className={`text-xs tracking-widest cursor-pointer ${
-              currentLang === lang.code ? 'font-medium text-foreground' : 'text-foreground/70'
+            onClick={() => setLanguage(lang.code)}
+            className={`text-xs tracking-widest cursor-pointer transition-colors ${
+              language === lang.code 
+                ? 'font-medium text-foreground bg-white/10' 
+                : 'text-foreground/70 hover:text-foreground hover:bg-white/5'
             }`}
           >
             {lang.label}
@@ -67,8 +70,8 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
-          : 'bg-white/40 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.05)]'
+          ? 'bg-luxury-charcoal/70 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)] rounded-b-[2rem]'
+          : 'bg-luxury-graphite/50 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.2)] rounded-b-[2rem]'
       }`}
     >
       <div className="luxury-container">
@@ -107,7 +110,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-all duration-500 overflow-hidden ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-luxury-charcoal/90 backdrop-blur-xl border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)] rounded-b-[2rem] transition-all duration-500 overflow-hidden ${
           isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -122,7 +125,7 @@ const Header = () => {
               {link.label}
             </a>
           ))}
-          <div className="pt-4 border-t border-border/20">
+          <div className="pt-4 border-t border-white/10">
             <LanguageSwitcher className="text-sm" />
           </div>
         </nav>
