@@ -4,16 +4,43 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from '@/integrations/supabase/client';
+
+const generateCaptcha = () => {
+  const operations = ['+', '-'];
+  const operation = operations[Math.floor(Math.random() * operations.length)];
+  let num1: number, num2: number, answer: number;
+  
+  if (operation === '+') {
+    num1 = Math.floor(Math.random() * 10) + 1;
+    num2 = Math.floor(Math.random() * 10) + 1;
+    answer = num1 + num2;
+  } else {
+    num1 = Math.floor(Math.random() * 10) + 5;
+    num2 = Math.floor(Math.random() * num1);
+    answer = num1 - num2;
+  }
+  
+  return { question: `${num1} ${operation} ${num2}`, answer };
+};
 
 const ContactSection = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captcha, setCaptcha] = useState(generateCaptcha());
+  const [captchaInput, setCaptchaInput] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     phone: '+998 ',
     message: '',
   });
+
+  const refreshCaptcha = () => {
+    setCaptcha(generateCaptcha());
+    setCaptchaInput('');
+  };
 
   const formatPhoneNumber = (value: string) => {
     // Keep +998 prefix and only allow digits after it
@@ -39,35 +66,63 @@ const ContactSection = () => {
     setFormData({ ...formData, phone: formatted });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate captcha
+    if (parseInt(captchaInput) !== captcha.answer) {
+      toast({
+        title: t('contact.captchaError'),
+        description: "",
+        variant: "destructive",
+      });
+      refreshCaptcha();
+      return;
+    }
     
     // Validate phone number (should have 9 digits after +998)
     const phoneDigits = formData.phone.replace(/\D/g, '');
     if (phoneDigits.length !== 12) {
       toast({
         title: "Error",
-        description: "Please enter a valid phone number",
+        description: t('contact.phoneError'),
         variant: "destructive",
       });
       return;
     }
 
-    // Here you would typically send the data to a backend
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: t('contact.success'),
-      description: "",
-    });
-    
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      phone: '+998 ',
-      message: '',
-    });
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-telegram', {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: t('contact.success'),
+        description: "",
+      });
+      
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        phone: '+998 ',
+        message: '',
+      });
+      refreshCaptcha();
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: t('contact.error'),
+        description: "",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,11 +196,37 @@ const ContactSection = () => {
             />
           </div>
 
+          {/* Captcha */}
+          <div className="space-y-2">
+            <label className="text-sm font-light text-foreground/80">
+              {t('contact.captcha')}: {captcha.question} = ?
+            </label>
+            <div className="flex gap-4">
+              <Input
+                type="number"
+                value={captchaInput}
+                onChange={(e) => setCaptchaInput(e.target.value)}
+                placeholder={t('contact.captchaPlaceholder')}
+                className="bg-card border-border/50 focus:border-primary/50 h-12 rounded-xl flex-1"
+                required
+              />
+              <Button
+                type="button"
+                variant="outline"
+                onClick={refreshCaptcha}
+                className="h-12 rounded-xl px-4"
+              >
+                ↻
+              </Button>
+            </div>
+          </div>
+
           <Button
             type="submit"
-            className="w-full h-14 rounded-xl bg-foreground text-background hover:bg-foreground/90 font-light tracking-wider text-sm"
+            disabled={isSubmitting}
+            className="w-full h-14 rounded-xl bg-foreground text-background hover:bg-foreground/90 font-light tracking-wider text-sm disabled:opacity-50"
           >
-            {t('contact.submit')}
+            {isSubmitting ? t('contact.submitting') : t('contact.submit')}
           </Button>
         </form>
       </div>
