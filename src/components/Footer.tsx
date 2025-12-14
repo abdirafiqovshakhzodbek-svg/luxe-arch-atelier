@@ -54,17 +54,14 @@ const Footer = () => {
               <a href="#home" className="text-foreground/80 hover:text-foreground transition-colors font-light">
                 {t('nav.home')}
               </a>
-              <a href="#about" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                {t('nav.about')}
-              </a>
               <a href="#services" className="text-foreground/80 hover:text-foreground transition-colors font-light">
                 {t('nav.services')}
               </a>
               <a href="#properties" className="text-foreground/80 hover:text-foreground transition-colors font-light">
                 {t('nav.projects')}
               </a>
-              <a href="#gallery" className="text-foreground/80 hover:text-foreground transition-colors font-light">
-                {t('nav.gallery')}
+              <a href="#request" className="text-foreground/80 hover:text-foreground transition-colors font-light">
+                {t('nav.request')}
               </a>
             </nav>
           </div>
