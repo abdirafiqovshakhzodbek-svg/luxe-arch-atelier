@@ -46,9 +46,9 @@ const Footer = () => {
               <p>studio@pixelaurora.uz</p>
               <p>+998 90 125-48-68</p>
               <p className="text-muted-foreground">
-                ул. Амир Темур, 456
+                {t('footer.address.street')}
                 <br />
-                Ташкент, 123456
+                {t('footer.address.city')}
               </p>
             </div>
           </div>

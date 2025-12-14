@@ -60,6 +60,20 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2025 Pixel Aurora. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Use',
+    'footer.address.street': 'Amir Temur St., 456',
+    'footer.address.city': 'Tashkent, 123456',
+
+    // Contact Form
+    'contact.label': 'Contact Us',
+    'contact.title': 'Submit a Request',
+    'contact.description': 'Fill out the form and we will contact you shortly',
+    'contact.firstName': 'First Name',
+    'contact.lastName': 'Last Name',
+    'contact.phone': 'Phone Number',
+    'contact.message': 'Message or Comment',
+    'contact.submit': 'Submit Request',
+    'contact.success': 'Request sent successfully!',
+    'contact.phonePlaceholder': '+998 XX XXX XX XX',
   },
   rus: {
     // Navigation
@@ -112,6 +126,20 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2025 Pixel Aurora. Все права защищены.',
     'footer.privacy': 'Политика конфиденциальности',
     'footer.terms': 'Условия использования',
+    'footer.address.street': 'ул. Амир Темур, 456',
+    'footer.address.city': 'Ташкент, 123456',
+
+    // Contact Form
+    'contact.label': 'Связаться',
+    'contact.title': 'Оставить заявку',
+    'contact.description': 'Заполните форму и мы свяжемся с вами в ближайшее время',
+    'contact.firstName': 'Имя',
+    'contact.lastName': 'Фамилия',
+    'contact.phone': 'Номер телефона',
+    'contact.message': 'Сообщение или комментарий',
+    'contact.submit': 'Отправить заявку',
+    'contact.success': 'Заявка успешно отправлена!',
+    'contact.phonePlaceholder': '+998 XX XXX XX XX',
   },
   uzb: {
     // Navigation
@@ -164,6 +192,20 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2025 Pixel Aurora. Barcha huquqlar himoyalangan.',
     'footer.privacy': 'Maxfiylik siyosati',
     'footer.terms': 'Foydalanish shartlari',
+    'footer.address.street': 'Amir Temur ko\'chasi, 456',
+    'footer.address.city': 'Toshkent, 123456',
+
+    // Contact Form
+    'contact.label': "Bog'lanish",
+    'contact.title': "So'rov qoldirish",
+    'contact.description': "Formani to'ldiring va biz tez orada siz bilan bog'lanamiz",
+    'contact.firstName': 'Ism',
+    'contact.lastName': 'Familiya',
+    'contact.phone': 'Telefon raqami',
+    'contact.message': 'Xabar yoki izoh',
+    'contact.submit': "So'rov yuborish",
+    'contact.success': "So'rov muvaffaqiyatli yuborildi!",
+    'contact.phonePlaceholder': '+998 XX XXX XX XX',
   },
   'uzb-cyr': {
     // Navigation
@@ -216,6 +258,20 @@ const translations: Record<Language, Record<string, string>> = {
     'footer.copyright': '© 2025 Pixel Aurora. Барча ҳуқуқлар ҳимояланган.',
     'footer.privacy': 'Махфийлик сиёсати',
     'footer.terms': 'Фойдаланиш шартлари',
+    'footer.address.street': 'Амир Темур кўчаси, 456',
+    'footer.address.city': 'Тошкент, 123456',
+
+    // Contact Form
+    'contact.label': 'Боғланиш',
+    'contact.title': 'Сўров қолдириш',
+    'contact.description': 'Формани тўлдиринг ва биз тез орада сиз билан боғланамиз',
+    'contact.firstName': 'Исм',
+    'contact.lastName': 'Фамилия',
+    'contact.phone': 'Телефон рақами',
+    'contact.message': 'Хабар ёки изоҳ',
+    'contact.submit': 'Сўров юбориш',
+    'contact.success': 'Сўров муваффақиятли юборилди!',
+    'contact.phonePlaceholder': '+998 XX XXX XX XX',
   },
 };
 
