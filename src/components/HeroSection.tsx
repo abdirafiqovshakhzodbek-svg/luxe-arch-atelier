@@ -38,7 +38,7 @@ const HeroSection = () => {
             <a href="#services" className="luxury-button">
               {t('hero.services')}
             </a>
-            <a href="#contact" className="luxury-button-outline">
+            <a href="#request" className="luxury-button-outline">
               {t('hero.contact')}
             </a>
           </div>
