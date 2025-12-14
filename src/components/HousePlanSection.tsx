@@ -1,14 +1,14 @@
 import floorPlan from '@/assets/floor-plan.jpg';
 
 const rooms = [
-  { name: 'Living Room', area: 45 },
-  { name: 'Master Bedroom', area: 28 },
-  { name: 'Kitchen', area: 22 },
-  { name: 'Dining Area', area: 18 },
-  { name: 'Bedroom 2', area: 16 },
-  { name: 'Bedroom 3', area: 14 },
-  { name: 'Bathroom', area: 12 },
-  { name: 'Terrace', area: 35 },
+  { name: 'Гостиная', area: 45 },
+  { name: 'Главная спальня', area: 28 },
+  { name: 'Кухня', area: 22 },
+  { name: 'Столовая', area: 18 },
+  { name: 'Спальня 2', area: 16 },
+  { name: 'Спальня 3', area: 14 },
+  { name: 'Ванная', area: 12 },
+  { name: 'Терраса', area: 35 },
 ];
 
 const totalArea = rooms.reduce((sum, room) => sum + room.area, 0);
@@ -19,12 +19,12 @@ const HousePlanSection = () => {
       <div className="luxury-container">
         {/* Section Header */}
         <div className="mb-16 md:mb-24 text-center">
-          <span className="luxury-number text-sm">Featured Project</span>
+          <span className="luxury-number text-sm">Избранный проект</span>
           <h2 className="mt-4 text-display-lg luxury-heading">
-            House Plan
+            План дома
           </h2>
           <p className="mt-6 text-muted-foreground font-light text-lg">
-            The area is <span className="text-foreground">{totalArea} m²</span>
+            Площадь <span className="text-foreground">{totalArea} м²</span>
           </p>
         </div>
 
@@ -48,7 +48,7 @@ const HousePlanSection = () => {
                     </span>
                   </div>
                   <span className="text-muted-foreground font-light tabular-nums">
-                    {room.area} m²
+                    {room.area} м²
                   </span>
                 </div>
               ))}
@@ -57,10 +57,10 @@ const HousePlanSection = () => {
             {/* Total */}
             <div className="flex items-center justify-between mt-8 pt-6 border-t border-border">
               <span className="text-sm tracking-[0.15em] uppercase text-muted-foreground">
-                Total Area
+                Общая площадь
               </span>
               <span className="text-2xl font-display font-light text-foreground">
-                {totalArea} m²
+                {totalArea} м²
               </span>
             </div>
           </div>

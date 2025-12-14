@@ -20,9 +20,9 @@ const HeroSection = () => {
         <div className="max-w-5xl">
           {/* Main Heading */}
           <h1 className="text-display-xl font-display font-light text-foreground uppercase tracking-wider opacity-0 animate-fade-up">
-            Architecture
+            Архитектура
             <br />
-            <span className="text-muted-foreground">Reimagined</span>
+            <span className="text-muted-foreground">Переосмыслена</span>
           </h1>
           
           {/* Subtitle */}
@@ -33,17 +33,17 @@ const HeroSection = () => {
           {/* CTA */}
           <div className="mt-12 flex flex-wrap gap-4 opacity-0 animate-fade-up delay-400">
             <a href="#services" className="luxury-button">
-              Explore Services
+              Наши услуги
             </a>
             <a href="#contact" className="luxury-button-outline">
-              Get in Touch
+              Связаться
             </a>
           </div>
         </div>
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in delay-600">
-          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Scroll</span>
+          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">Листать</span>
           <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
         </div>
       </div>
