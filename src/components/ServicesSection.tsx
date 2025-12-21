@@ -1,7 +1,7 @@
-import serviceShowcase from '@/assets/service-showcase.jpg';
-import servicePlanning from '@/assets/service-planning.jpg';
-import serviceDesign from '@/assets/service-design.jpg';
-import serviceSpace from '@/assets/service-space.jpg';
+import serviceConcept from '@/assets/service-concept.jpg';
+import serviceInterior from '@/assets/service-interior.jpg';
+import serviceVisualization from '@/assets/service-visualization.mp4';
+import serviceMaterials from '@/assets/service-materials.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
@@ -12,25 +12,29 @@ const ServicesSection = () => {
       number: '01',
       titleKey: 'services.01.title',
       descriptionKey: 'services.01.description',
-      image: serviceShowcase,
+      media: serviceConcept,
+      isVideo: false,
     },
     {
       number: '02',
       titleKey: 'services.02.title',
       descriptionKey: 'services.02.description',
-      image: servicePlanning,
+      media: serviceInterior,
+      isVideo: false,
     },
     {
       number: '03',
       titleKey: 'services.03.title',
       descriptionKey: 'services.03.description',
-      image: serviceDesign,
+      media: serviceVisualization,
+      isVideo: true,
     },
     {
       number: '04',
       titleKey: 'services.04.title',
       descriptionKey: 'services.04.description',
-      image: serviceSpace,
+      media: serviceMaterials,
+      isVideo: false,
     },
   ];
 
@@ -56,13 +60,24 @@ const ServicesSection = () => {
               className="group luxury-card overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Image */}
+              {/* Media */}
               <div className="relative h-64 md:h-80 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={t(service.titleKey)}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+                {service.isVideo ? (
+                  <video
+                    src={service.media}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img
+                    src={service.media}
+                    alt={t(service.titleKey)}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
                 
                 {/* Number Overlay */}
