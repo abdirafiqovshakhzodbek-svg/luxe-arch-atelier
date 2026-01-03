@@ -312,8 +312,8 @@ const ProjectsContent = () => {
                     transition={{ delay: 0.2 }}
                     className="max-w-4xl"
                   >
-                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light flex items-center gap-2">
-                      <span className="text-lg">🎨</span> {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
+                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light">
+                      {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
                     </span>
                     <h2 className="text-3xl md:text-5xl font-light mt-4 mb-3 tracking-tight">
                       {currentBathroomProject.title}
