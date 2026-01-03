@@ -8,6 +8,11 @@ import kitchen1 from '@/assets/kitchen-1.jpg';
 import kitchen2 from '@/assets/kitchen-2.jpg';
 import kitchen3 from '@/assets/kitchen-3.jpg';
 import kitchen4 from '@/assets/kitchen-4.jpg';
+import bathroom1 from '@/assets/bathroom-1.png';
+import bathroom2 from '@/assets/bathroom-2.png';
+import bathroom3 from '@/assets/bathroom-3.png';
+import bathroom4 from '@/assets/bathroom-4.png';
+import bathroom5 from '@/assets/bathroom-5.png';
 
 interface LightboxProps {
   images: string[];
@@ -78,7 +83,7 @@ const Lightbox = ({ images, currentIndex, onClose, onPrev, onNext }: LightboxPro
 };
 
 const ProjectsContent = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
@@ -110,6 +115,28 @@ const ProjectsContent = () => {
     images: [kitchen1, kitchen2, kitchen3, kitchen4],
   };
 
+  const isUzbek = language === 'uzb' || language === 'uzb-cyr';
+  
+  const bathroomProject = {
+    title: isUzbek ? 'Zamonaviy luxury mehmon sanuzeli' : 'Современный luxury гостевой санузел',
+    subtitle: isUzbek ? "Minimalizm va tabiiy tosh uyg'unligi" : 'Минимализм и натуральный камень',
+    features: isUzbek 
+      ? [
+          'Organik shakldagi oyna',
+          'Yumshoq LED yoritish',
+          'Monolit rakovina',
+          'Sokin, toza va premium muhit'
+        ]
+      : [
+          'Органичное зеркало',
+          'Мягкая подсветка',
+          'Консольная раковина',
+          'Атмосфера уюта и статуса'
+        ],
+    tagline: isUzbek ? 'Kichik maydon, katta effekt.' : 'Компактно, эстетично, премиально.',
+    images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
+  };
+
   const mainCategories = [
     {
       id: 'exterior',
@@ -122,7 +149,7 @@ const ProjectsContent = () => {
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
       subcategories: [
         { id: 'bedroom', name: 'Bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop' },
-        { id: 'bathroom', name: 'Bathroom', image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop' },
+        { id: 'bathroom', name: 'Bathroom', image: bathroom1, hasDetail: true },
         { id: 'kitchen', name: 'Kitchen', image: kitchen1, hasDetail: true },
         { id: 'library', name: 'Library', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop' },
       ],
@@ -150,7 +177,6 @@ const ProjectsContent = () => {
     }
   };
 
-  // Get all category images for lightbox
   const getCategoryImages = () => {
     return mainCategories.map(c => c.image);
   };
@@ -179,8 +205,98 @@ const ProjectsContent = () => {
           </motion.div>
 
           <AnimatePresence mode="wait">
-            {/* Kitchen Detail View */}
-            {activeSubcategory === 'kitchen' ? (
+            {/* Bathroom Detail View */}
+            {activeSubcategory === 'bathroom' ? (
+              <motion.div
+                key="bathroom-detail"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Back Button */}
+                <button
+                  onClick={handleBack}
+                  className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
+                >
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <span>Back to Interior</span>
+                </button>
+
+                {/* Project Header */}
+                <div className="mb-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="max-w-3xl"
+                  >
+                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light flex items-center gap-2">
+                      <span className="text-lg">🎨</span> {isUzbek ? 'Loyiha' : 'Проект'}
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-2 tracking-tight">
+                      {bathroomProject.title}
+                    </h2>
+                    <p className="text-foreground/50 text-lg italic mb-10">
+                      {bathroomProject.subtitle}
+                    </p>
+                    
+                    {/* Features List */}
+                    <div className="space-y-4 mb-8">
+                      {bathroomProject.features.map((feature, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + index * 0.1 }}
+                          className="flex items-center gap-4"
+                        >
+                          <div className="w-2 h-2 rounded-full bg-primary/60" />
+                          <span className="text-lg text-foreground/80 font-light">{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Tagline */}
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.7 }}
+                      className="text-xl md:text-2xl font-light text-primary/90 border-l-2 border-primary/40 pl-6 italic"
+                    >
+                      {bathroomProject.tagline}
+                    </motion.p>
+                  </motion.div>
+                </div>
+
+                {/* Image Gallery - Masonry style */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {bathroomProject.images.map((img, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                      onClick={() => openLightbox(bathroomProject.images, index)}
+                      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+                        index === 0 ? 'md:col-span-2 lg:col-span-2 aspect-[16/10]' : 'aspect-[3/4]'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Bathroom design ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to view
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ) : activeSubcategory === 'kitchen' ? (
               <motion.div
                 key="kitchen-detail"
                 initial={{ opacity: 0, y: 30 }}
