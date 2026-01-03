@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,6 +20,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,10 +34,11 @@ const Header = () => {
   const currentLanguage = languages.find(l => l.code === language);
 
   const navLinks = [
-    { href: '#home', label: t('nav.home') },
-    { href: '#about', label: t('nav.about') },
-    { href: '#services', label: t('nav.services') },
-    { href: '#request', label: t('nav.request') },
+    { href: isHomePage ? '#home' : '/', label: t('nav.home'), isRoute: !isHomePage },
+    { href: isHomePage ? '#about' : '/#about', label: t('nav.about'), isRoute: !isHomePage },
+    { href: '/projects', label: t('nav.projects'), isRoute: true },
+    { href: isHomePage ? '#services' : '/#services', label: t('nav.services'), isRoute: !isHomePage },
+    { href: isHomePage ? '#request' : '/#request', label: t('nav.request'), isRoute: !isHomePage },
   ];
 
   const LanguageSwitcher = ({ className = '' }: { className?: string }) => (
@@ -82,13 +86,23 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="luxury-nav-link"
-              >
-                {link.label}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="luxury-nav-link"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="luxury-nav-link"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <LanguageSwitcher />
           </nav>
@@ -114,14 +128,25 @@ const Header = () => {
       >
         <nav className="luxury-container py-8 flex flex-col gap-6">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="luxury-nav-link text-base"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {link.label}
-            </a>
+            link.isRoute ? (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="luxury-nav-link text-base"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                key={link.href}
+                href={link.href}
+                className="luxury-nav-link text-base"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            )
           ))}
           <div className="pt-4 border-t border-white/10">
             <LanguageSwitcher className="text-sm" />
