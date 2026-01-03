@@ -29,6 +29,10 @@ import library7 from '@/assets/library-7.png';
 import library8 from '@/assets/library-8.png';
 import library9 from '@/assets/library-9.png';
 import library10 from '@/assets/library-10.png';
+import office1 from '@/assets/office-1.jpg';
+import office2 from '@/assets/office-2.jpg';
+import office3 from '@/assets/office-3.jpg';
+import office4 from '@/assets/office-4.jpg';
 
 interface LightboxProps {
   images: string[];
@@ -216,9 +220,46 @@ const ProjectsContent = () => {
     },
   };
 
+  // Office Project
+  const officeContent = {
+    eng: {
+      title: 'Modern Office',
+      idea: 'Minimalism and comfort, lighting and colors separate work and guest zones.',
+      materials: 'Wood and metal, natural fabrics; efficient lighting.',
+      features: 'Open floor plan, bright and spacious, comfortable workspace and guest area.',
+    },
+    rus: {
+      title: 'Современный офис',
+      idea: 'Минимализм и комфорт, освещение и цвета разделяют рабочую и гостевую зоны.',
+      materials: 'Дерево и металл, натуральные ткани; эффективное освещение.',
+      features: 'Свободная планировка, светло и просторно, удобное рабочее место и зона для гостей.',
+    },
+    uzb: {
+      title: "Zamonaviy ofis",
+      idea: "Minimalizm va qulaylik, yoritish va ranglar ish va mehmon zonalarini ajratadi.",
+      materials: "Yog'och va metall, tabiiy matolar; samarali yoritish.",
+      features: "Ochiq rejalashtirish, yorug' va keng, qulay ish joyi va mehmonlar uchun zona.",
+    },
+    'uzb-cyr': {
+      title: 'Замонавий офис',
+      idea: 'Минимализм ва қулайлик, ёритиш ва ранглар иш ва меҳмон зоналарини ажратади.',
+      materials: 'Ёғоч ва металл, табиий матолар; самарали ёритиш.',
+      features: 'Очиқ режалаштириш, ёруғ ва кенг, қулай иш жойи ва меҳмонлар учун зона.',
+    },
+  };
+
   const currentBathroom1 = bathroomContent1[language];
   const currentBathroom2 = bathroomContent2[language];
   const currentLibrary = libraryContent[language];
+  const currentOffice = officeContent[language];
+
+  const officeProject = {
+    title: currentOffice.title,
+    idea: currentOffice.idea,
+    materials: currentOffice.materials,
+    features: currentOffice.features,
+    images: [office1, office2, office3, office4],
+  };
 
   const libraryProject = {
     title: currentLibrary.title,
@@ -267,7 +308,8 @@ const ProjectsContent = () => {
     {
       id: 'office',
       name: 'Office',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop',
+      image: office1,
+      hasDetail: true,
     },
   ];
 
@@ -607,6 +649,121 @@ const ProjectsContent = () => {
                   ))}
                 </motion.div>
               </motion.div>
+            ) : activeCategory === 'office' ? (
+              <motion.div
+                key="office-detail"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Back Button */}
+                <button
+                  onClick={handleBack}
+                  className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
+                >
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <span>Back to Categories</span>
+                </button>
+
+                {/* Project Header */}
+                <div className="mb-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="max-w-4xl"
+                  >
+                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light">
+                      {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-8 tracking-tight">
+                      {officeProject.title}
+                    </h2>
+                    
+                    {/* Idea */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="mb-6"
+                    >
+                      <div className="border-l-2 border-primary/30 pl-6">
+                        <span className="text-xs tracking-[0.2em] text-primary/60 uppercase block mb-2">
+                          {language === 'eng' ? 'Idea' : language === 'rus' ? 'Идея' : language === 'uzb-cyr' ? 'Ғоя' : "G'oya"}
+                        </span>
+                        <p className="text-lg text-foreground/70 font-light leading-relaxed">
+                          {officeProject.idea}
+                        </p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Materials */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="mb-6"
+                    >
+                      <div className="border-l-2 border-primary/30 pl-6">
+                        <span className="text-xs tracking-[0.2em] text-primary/60 uppercase block mb-2">
+                          {language === 'eng' ? 'Materials' : language === 'rus' ? 'Материалы' : language === 'uzb-cyr' ? 'Материаллар' : 'Materiallar'}
+                        </span>
+                        <p className="text-lg text-foreground/70 font-light leading-relaxed">
+                          {officeProject.materials}
+                        </p>
+                      </div>
+                    </motion.div>
+                    
+                    {/* Features */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="mb-8"
+                    >
+                      <div className="border-l-2 border-primary/30 pl-6">
+                        <span className="text-xs tracking-[0.2em] text-primary/60 uppercase block mb-2">
+                          {language === 'eng' ? 'Features' : language === 'rus' ? 'Особенности' : language === 'uzb-cyr' ? 'Хусусиятлар' : 'Xususiyatlar'}
+                        </span>
+                        <p className="text-lg text-foreground/70 font-light leading-relaxed">
+                          {officeProject.features}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Image Gallery */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                >
+                  {officeProject.images.map((img, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.1 + index * 0.08 }}
+                      onClick={() => openLightbox(officeProject.images, index)}
+                      className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3]"
+                    >
+                      <img
+                        src={img}
+                        alt={`Office design ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to view
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
             ) : activeCategory === 'interior' && interiorCategory?.subcategories ? (
               <motion.div
                 key="interior-subcategories"
@@ -671,7 +828,15 @@ const ProjectsContent = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      onClick={() => category.subcategories ? setActiveCategory(category.id) : openLightbox(getCategoryImages(), index)}
+                      onClick={() => {
+                        if (category.subcategories) {
+                          setActiveCategory(category.id);
+                        } else if (category.hasDetail) {
+                          setActiveCategory(category.id);
+                        } else {
+                          openLightbox(getCategoryImages(), index);
+                        }
+                      }}
                       className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
                     >
                       <img
@@ -685,7 +850,7 @@ const ProjectsContent = () => {
                           {category.name}
                         </span>
                         <p className="text-white/50 text-sm mt-1">
-                          {category.subcategories ? 'Click to explore' : 'Click to view'}
+                          {category.subcategories ? 'Click to explore' : category.hasDetail ? 'View project →' : 'Click to view'}
                         </p>
                       </div>
                     </motion.div>
