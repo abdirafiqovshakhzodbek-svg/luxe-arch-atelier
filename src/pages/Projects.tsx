@@ -115,25 +115,40 @@ const ProjectsContent = () => {
     images: [kitchen1, kitchen2, kitchen3, kitchen4],
   };
 
-  const isUzbek = language === 'uzb' || language === 'uzb-cyr';
+  const bathroomContent = {
+    eng: {
+      title: 'Modern Luxury Guest Bathroom',
+      subtitle: 'Minimalism and natural stone.',
+      features: ['Organic mirror', 'Soft lighting', 'Console sink creates an atmosphere of comfort and status.'],
+      tagline: 'Compact, aesthetic, premium.',
+    },
+    rus: {
+      title: 'Современный luxury гостевой санузел',
+      subtitle: 'Минимализм и натуральный камень.',
+      features: ['Органичное зеркало', 'Мягкая подсветка', 'Консольная раковина создают атмосферу уюта и статуса.'],
+      tagline: 'Компактно, эстетично, премиально.',
+    },
+    uzb: {
+      title: 'Zamonaviy luxury mehmon sanuzeli',
+      subtitle: "Minimalizm va tabiiy tosh.",
+      features: ['Organik oyna', 'Yumshoq yoritish', "Konsol lavabo qulaylik va maqom muhitini yaratadi."],
+      tagline: "Ixcham, estetik, premium.",
+    },
+    'uzb-cyr': {
+      title: 'Замонавий luxury меҳмон санузели',
+      subtitle: 'Минимализм ва табиий тош.',
+      features: ['Органик ойна', 'Юмшоқ ёритиш', 'Консол лаваба қулайлик ва мақом муҳитини яратади.'],
+      tagline: 'Ихчам, эстетик, премиум.',
+    },
+  };
+
+  const currentBathroom = bathroomContent[language];
   
   const bathroomProject = {
-    title: isUzbek ? 'Zamonaviy luxury mehmon sanuzeli' : 'Современный luxury гостевой санузел',
-    subtitle: isUzbek ? "Minimalizm va tabiiy tosh uyg'unligi" : 'Минимализм и натуральный камень',
-    features: isUzbek 
-      ? [
-          'Organik shakldagi oyna',
-          'Yumshoq LED yoritish',
-          'Monolit rakovina',
-          'Sokin, toza va premium muhit'
-        ]
-      : [
-          'Органичное зеркало',
-          'Мягкая подсветка',
-          'Консольная раковина',
-          'Атмосфера уюта и статуса'
-        ],
-    tagline: isUzbek ? 'Kichik maydon, katta effekt.' : 'Компактно, эстетично, премиально.',
+    title: currentBathroom.title,
+    subtitle: currentBathroom.subtitle,
+    features: currentBathroom.features,
+    tagline: currentBathroom.tagline,
     images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
   };
 
@@ -232,7 +247,7 @@ const ProjectsContent = () => {
                     className="max-w-3xl"
                   >
                     <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light flex items-center gap-2">
-                      <span className="text-lg">🎨</span> {isUzbek ? 'Loyiha' : 'Проект'}
+                      <span className="text-lg">🎨</span> {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
                     </span>
                     <h2 className="text-3xl md:text-5xl font-light mt-4 mb-2 tracking-tight">
                       {bathroomProject.title}
