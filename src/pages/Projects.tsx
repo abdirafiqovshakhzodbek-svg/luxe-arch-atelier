@@ -372,7 +372,7 @@ const ProjectsContent = () => {
                   className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  <span>Back to Interior</span>
+                  <span>{t('projects.backToInterior')}</span>
                 </button>
 
                 {/* Project Selector */}
@@ -486,7 +486,7 @@ const ProjectsContent = () => {
                   className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  <span>Back to Interior</span>
+                  <span>{t('projects.backToInterior')}</span>
                 </button>
 
                 {/* Project Header */}
@@ -568,7 +568,7 @@ const ProjectsContent = () => {
                   className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  <span>Back to Interior</span>
+                  <span>{t('projects.backToInterior')}</span>
                 </button>
 
                 {/* Project Header */}
@@ -663,7 +663,7 @@ const ProjectsContent = () => {
                   className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  <span>Back to Categories</span>
+                  <span>{t('projects.backToCategories')}</span>
                 </button>
 
                 {/* Project Header */}
@@ -778,10 +778,10 @@ const ProjectsContent = () => {
                   className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-8 transition-colors group"
                 >
                   <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                  <span>Back to Categories</span>
+                  <span>{t('projects.backToCategories')}</span>
                 </button>
 
-                <h2 className="text-2xl font-light mb-8">Interior Categories</h2>
+                <h2 className="text-2xl font-light mb-8">{t('projects.interiorCategories')}</h2>
 
                 {/* Interior Subcategories Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -805,7 +805,7 @@ const ProjectsContent = () => {
                           {sub.name}
                         </span>
                         <p className="text-white/50 text-sm mt-1">
-                          {sub.hasDetail ? 'View project →' : 'Click to view'}
+                          {sub.hasDetail ? t('projects.viewProject') : t('projects.clickToView')}
                         </p>
                       </div>
                     </motion.div>
@@ -850,7 +850,7 @@ const ProjectsContent = () => {
                           {category.name}
                         </span>
                         <p className="text-white/50 text-sm mt-1">
-                          {category.subcategories ? 'Click to explore' : category.hasDetail ? 'View project →' : 'Click to view'}
+                          {category.subcategories ? t('projects.clickToExplore') : category.hasDetail ? t('projects.viewProject') : t('projects.clickToView')}
                         </p>
                       </div>
                     </motion.div>
