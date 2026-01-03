@@ -13,6 +13,12 @@ import bathroom2 from '@/assets/bathroom-2.png';
 import bathroom3 from '@/assets/bathroom-3.png';
 import bathroom4 from '@/assets/bathroom-4.png';
 import bathroom5 from '@/assets/bathroom-5.png';
+import bathroom2_1 from '@/assets/bathroom-2-1.png';
+import bathroom2_2 from '@/assets/bathroom-2-2.png';
+import bathroom2_3 from '@/assets/bathroom-2-3.png';
+import bathroom2_4 from '@/assets/bathroom-2-4.png';
+import bathroom2_5 from '@/assets/bathroom-2-5.png';
+import bathroom2_6 from '@/assets/bathroom-2-6.png';
 
 interface LightboxProps {
   images: string[];
@@ -86,6 +92,7 @@ const ProjectsContent = () => {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
+  const [activeBathroomProject, setActiveBathroomProject] = useState<number>(0);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -115,7 +122,8 @@ const ProjectsContent = () => {
     images: [kitchen1, kitchen2, kitchen3, kitchen4],
   };
 
-  const bathroomContent = {
+  // Bathroom Project 1 - Guest Bathroom
+  const bathroomContent1 = {
     eng: {
       title: 'Modern Luxury Guest Bathroom',
       subtitle: 'Minimalism and natural stone.',
@@ -142,15 +150,55 @@ const ProjectsContent = () => {
     },
   };
 
-  const currentBathroom = bathroomContent[language];
-  
-  const bathroomProject = {
-    title: currentBathroom.title,
-    subtitle: currentBathroom.subtitle,
-    features: currentBathroom.features,
-    tagline: currentBathroom.tagline,
-    images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
+  // Bathroom Project 2 - Luxury Bathroom
+  const bathroomContent2 = {
+    eng: {
+      title: 'Modern Luxury Bathroom',
+      subtitle: 'Elegant minimalism with elements of natural luxury.',
+      description: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
+      features: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
+    },
+    rus: {
+      title: 'Современная luxury ванная комната',
+      subtitle: 'Элегантный минимализм с элементами природной роскоши.',
+      description: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
+      features: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
+    },
+    uzb: {
+      title: "Zamonaviy luxury hammom xonasi",
+      subtitle: "Tabiiy hashamat elementlari bilan nafis minimalizm.",
+      description: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
+      features: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
+    },
+    'uzb-cyr': {
+      title: 'Замонавий luxury ҳаммом хонаси',
+      subtitle: 'Табиий ҳашамат элементлари билан нафис минимализм.',
+      description: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
+      features: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
+    },
   };
+
+  const currentBathroom1 = bathroomContent1[language];
+  const currentBathroom2 = bathroomContent2[language];
+  
+  const bathroomProjects = [
+    {
+      title: currentBathroom1.title,
+      subtitle: currentBathroom1.subtitle,
+      features: currentBathroom1.features,
+      tagline: currentBathroom1.tagline,
+      images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
+    },
+    {
+      title: currentBathroom2.title,
+      subtitle: currentBathroom2.subtitle,
+      description: currentBathroom2.description,
+      features: currentBathroom2.features,
+      images: [bathroom2_1, bathroom2_2, bathroom2_3, bathroom2_4, bathroom2_5, bathroom2_6],
+    },
+  ];
+
+  const currentBathroomProject = bathroomProjects[activeBathroomProject];
 
   const mainCategories = [
     {
@@ -238,61 +286,116 @@ const ProjectsContent = () => {
                   <span>Back to Interior</span>
                 </button>
 
+                {/* Project Selector */}
+                <div className="flex gap-4 mb-12">
+                  {bathroomProjects.map((project, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveBathroomProject(index)}
+                      className={`px-6 py-3 rounded-full text-sm tracking-wider transition-all duration-300 ${
+                        activeBathroomProject === index
+                          ? 'bg-primary text-primary-foreground shadow-lg'
+                          : 'bg-muted/50 text-foreground/70 hover:bg-muted'
+                      }`}
+                    >
+                      {language === 'eng' ? `Project ${index + 1}` : language === 'rus' ? `Проект ${index + 1}` : language === 'uzb-cyr' ? `Лойиҳа ${index + 1}` : `Loyiha ${index + 1}`}
+                    </button>
+                  ))}
+                </div>
+
                 {/* Project Header */}
                 <div className="mb-16">
                   <motion.div
+                    key={activeBathroomProject}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="max-w-3xl"
+                    className="max-w-4xl"
                   >
                     <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light flex items-center gap-2">
                       <span className="text-lg">🎨</span> {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
                     </span>
-                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-2 tracking-tight">
-                      {bathroomProject.title}
+                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-3 tracking-tight">
+                      {currentBathroomProject.title}
                     </h2>
-                    <p className="text-foreground/50 text-lg italic mb-10">
-                      {bathroomProject.subtitle}
+                    
+                    {/* Elegant subtitle */}
+                    <p className="text-foreground/60 text-xl md:text-2xl italic font-light mb-8 leading-relaxed">
+                      {currentBathroomProject.subtitle}
                     </p>
                     
-                    {/* Features List */}
-                    <div className="space-y-4 mb-8">
-                      {bathroomProject.features.map((feature, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + index * 0.1 }}
-                          className="flex items-center gap-4"
-                        >
-                          <div className="w-2 h-2 rounded-full bg-primary/60" />
-                          <span className="text-lg text-foreground/80 font-light">{feature}</span>
-                        </motion.div>
-                      ))}
-                    </div>
+                    {/* Description for project 2 */}
+                    {'description' in currentBathroomProject && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                        className="mb-8"
+                      >
+                        <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                          {currentBathroomProject.description}
+                        </p>
+                      </motion.div>
+                    )}
+                    
+                    {/* Features - different display for each project type */}
+                    {Array.isArray(currentBathroomProject.features) ? (
+                      <div className="space-y-4 mb-8">
+                        {currentBathroomProject.features.map((feature, index) => (
+                          <motion.div
+                            key={index}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 + index * 0.1 }}
+                            className="flex items-center gap-4"
+                          >
+                            <div className="w-2 h-2 rounded-full bg-primary/60" />
+                            <span className="text-lg text-foreground/80 font-light">{feature}</span>
+                          </motion.div>
+                        ))}
+                      </div>
+                    ) : (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        className="mb-8"
+                      >
+                        <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                          {currentBathroomProject.features}
+                        </p>
+                      </motion.div>
+                    )}
 
-                    {/* Tagline */}
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.7 }}
-                      className="text-xl md:text-2xl font-light text-primary/90 border-l-2 border-primary/40 pl-6 italic"
-                    >
-                      {bathroomProject.tagline}
-                    </motion.p>
+                    {/* Tagline for project 1 */}
+                    {'tagline' in currentBathroomProject && (
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.7 }}
+                        className="text-xl md:text-2xl font-light text-primary/90 border-l-2 border-primary/40 pl-6 italic"
+                      >
+                        {currentBathroomProject.tagline}
+                      </motion.p>
+                    )}
                   </motion.div>
                 </div>
 
                 {/* Image Gallery - Masonry style */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {bathroomProject.images.map((img, index) => (
+                <motion.div 
+                  key={`gallery-${activeBathroomProject}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {currentBathroomProject.images.map((img, index) => (
                     <motion.div
                       key={index}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                      onClick={() => openLightbox(bathroomProject.images, index)}
+                      transition={{ duration: 0.6, delay: 0.1 + index * 0.08 }}
+                      onClick={() => openLightbox(currentBathroomProject.images, index)}
                       className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
                         index === 0 ? 'md:col-span-2 lg:col-span-2 aspect-[16/10]' : 'aspect-[3/4]'
                       }`}
@@ -309,7 +412,7 @@ const ProjectsContent = () => {
                       </div>
                     </motion.div>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             ) : activeSubcategory === 'kitchen' ? (
               <motion.div
