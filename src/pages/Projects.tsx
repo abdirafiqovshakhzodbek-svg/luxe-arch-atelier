@@ -127,26 +127,26 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Guest Bathroom',
       subtitle: 'Minimalism and natural stone.',
-      features: ['Organic mirror', 'Soft lighting', 'Console sink creates an atmosphere of comfort and status.'],
-      tagline: 'Compact, aesthetic, premium.',
+      description: 'Organic mirror, soft lighting, console sink creates an atmosphere of comfort and status.',
+      features: 'Compact, aesthetic, premium.',
     },
     rus: {
       title: 'Современный luxury гостевой санузел',
       subtitle: 'Минимализм и натуральный камень.',
-      features: ['Органичное зеркало', 'Мягкая подсветка', 'Консольная раковина создают атмосферу уюта и статуса.'],
-      tagline: 'Компактно, эстетично, премиально.',
+      description: 'Органичное зеркало, мягкая подсветка, консольная раковина создают атмосферу уюта и статуса.',
+      features: 'Компактно, эстетично, премиально.',
     },
     uzb: {
       title: 'Zamonaviy luxury mehmon sanuzeli',
       subtitle: "Minimalizm va tabiiy tosh.",
-      features: ['Organik oyna', 'Yumshoq yoritish', "Konsol lavabo qulaylik va maqom muhitini yaratadi."],
-      tagline: "Ixcham, estetik, premium.",
+      description: "Organik oyna, yumshoq yoritish, konsol lavabo qulaylik va maqom muhitini yaratadi.",
+      features: "Ixcham, estetik, premium.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury меҳмон санузели',
       subtitle: 'Минимализм ва табиий тош.',
-      features: ['Органик ойна', 'Юмшоқ ёритиш', 'Консол лаваба қулайлик ва мақом муҳитини яратади.'],
-      tagline: 'Ихчам, эстетик, премиум.',
+      description: 'Органик ойна, юмшоқ ёритиш, консол лаваба қулайлик ва мақом муҳитини яратади.',
+      features: 'Ихчам, эстетик, премиум.',
     },
   };
 
@@ -185,8 +185,8 @@ const ProjectsContent = () => {
     {
       title: currentBathroom1.title,
       subtitle: currentBathroom1.subtitle,
+      description: currentBathroom1.description,
       features: currentBathroom1.features,
-      tagline: currentBathroom1.tagline,
       images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
     },
     {
@@ -338,46 +338,29 @@ const ProjectsContent = () => {
                       </motion.div>
                     )}
                     
-                    {/* Features - different display for each project type */}
-                    {Array.isArray(currentBathroomProject.features) ? (
-                      <div className="space-y-4 mb-8">
-                        {currentBathroomProject.features.map((feature, index) => (
-                          <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3 + index * 0.1 }}
-                            className="flex items-center gap-4"
-                          >
-                            <div className="w-2 h-2 rounded-full bg-primary/60" />
-                            <span className="text-lg text-foreground/80 font-light">{feature}</span>
-                          </motion.div>
-                        ))}
-                      </div>
-                    ) : (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                        className="mb-8"
-                      >
-                        <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
-                          {currentBathroomProject.features}
-                        </p>
-                      </motion.div>
-                    )}
-
-                    {/* Tagline for project 1 */}
-                    {'tagline' in currentBathroomProject && (
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.7 }}
-                        className="text-xl md:text-2xl font-light text-primary/90 border-l-2 border-primary/40 pl-6 italic"
-                      >
-                        {currentBathroomProject.tagline}
-                      </motion.p>
-                    )}
+                    {/* Description */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="mb-8"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {currentBathroomProject.description}
+                      </p>
+                    </motion.div>
+                    
+                    {/* Features */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="mb-8"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {currentBathroomProject.features}
+                      </p>
+                    </motion.div>
                   </motion.div>
                 </div>
 
