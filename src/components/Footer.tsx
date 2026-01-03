@@ -70,7 +70,7 @@ const Footer = () => {
           <div>
             <h4 className="text-xs tracking-[0.2em] uppercase text-muted-foreground mb-6">{t('footer.contacts')}</h4>
             <div className="flex flex-col gap-3 text-foreground/80 font-light">
-              <p>studio@pixelaurora.uz</p>
+              <p>pixelauroraarchitect@gmail.com</p>
               <p>+998 90 125-48-68</p>
               <p className="text-muted-foreground">
                 {t('footer.address.street')}
