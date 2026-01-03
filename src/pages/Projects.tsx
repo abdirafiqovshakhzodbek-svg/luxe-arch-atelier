@@ -127,22 +127,26 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Guest Bathroom',
       subtitle: 'Minimalism and natural stone.',
-      description: 'Organic mirror, soft lighting, console sink creates an atmosphere of comfort and status. Compact, aesthetic, premium.',
+      description1: 'Organic mirror, soft lighting, console sink creates an atmosphere of comfort and status.',
+      description2: 'Compact, aesthetic, premium.',
     },
     rus: {
       title: 'Современный luxury гостевой санузел',
       subtitle: 'Минимализм и натуральный камень.',
-      description: 'Органичное зеркало, мягкая подсветка, консольная раковина создают атмосферу уюта и статуса. Компактно, эстетично, премиально.',
+      description1: 'Органичное зеркало, мягкая подсветка, консольная раковина создают атмосферу уюта и статуса.',
+      description2: 'Компактно, эстетично, премиально.',
     },
     uzb: {
       title: 'Zamonaviy luxury mehmon sanuzeli',
       subtitle: "Minimalizm va tabiiy tosh.",
-      description: "Organik oyna, yumshoq yoritish, konsol lavabo qulaylik va maqom muhitini yaratadi. Ixcham, estetik, premium.",
+      description1: "Organik oyna, yumshoq yoritish, konsol lavabo qulaylik va maqom muhitini yaratadi.",
+      description2: "Ixcham, estetik, premium.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury меҳмон санузели',
       subtitle: 'Минимализм ва табиий тош.',
-      description: 'Органик ойна, юмшоқ ёритиш, консол лаваба қулайлик ва мақом муҳитини яратади. Ихчам, эстетик, премиум.',
+      description1: 'Органик ойна, юмшоқ ёритиш, консол лаваба қулайлик ва мақом муҳитини яратади.',
+      description2: 'Ихчам, эстетик, премиум.',
     },
   };
 
@@ -151,22 +155,26 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Bathroom',
       subtitle: 'Elegant minimalism with elements of natural luxury.',
-      description: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury. Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
+      description1: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
+      description2: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
     },
     rus: {
       title: 'Современная luxury ванная комната',
       subtitle: 'Элегантный минимализм с элементами природной роскоши.',
-      description: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury. Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
+      description1: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
+      description2: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
     },
     uzb: {
       title: "Zamonaviy luxury hammom xonasi",
       subtitle: "Tabiiy hashamat elementlari bilan nafis minimalizm.",
-      description: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi. Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
+      description1: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
+      description2: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury ҳаммом хонаси',
       subtitle: 'Табиий ҳашамат элементлари билан нафис минимализм.',
-      description: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади. Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
+      description1: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
+      description2: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
     },
   };
 
@@ -177,13 +185,15 @@ const ProjectsContent = () => {
     {
       title: currentBathroom1.title,
       subtitle: currentBathroom1.subtitle,
-      description: currentBathroom1.description,
+      description1: currentBathroom1.description1,
+      description2: currentBathroom1.description2,
       images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
     },
     {
       title: currentBathroom2.title,
       subtitle: currentBathroom2.subtitle,
-      description: currentBathroom2.description,
+      description1: currentBathroom2.description1,
+      description2: currentBathroom2.description2,
       images: [bathroom2_1, bathroom2_2, bathroom2_3, bathroom2_4, bathroom2_5, bathroom2_6],
     },
   ];
@@ -314,29 +324,27 @@ const ProjectsContent = () => {
                       {currentBathroomProject.subtitle}
                     </p>
                     
-                    {/* Description for project 2 */}
-                    {'description' in currentBathroomProject && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.3 }}
-                        className="mb-8"
-                      >
-                        <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
-                          {currentBathroomProject.description}
-                        </p>
-                      </motion.div>
-                    )}
-                    
-                    {/* Description */}
+                    {/* Description Line 1 */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.3 }}
+                      className="mb-4"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {currentBathroomProject.description1}
+                      </p>
+                    </motion.div>
+                    
+                    {/* Description Line 2 */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
                       className="mb-8"
                     >
                       <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
-                        {currentBathroomProject.description}
+                        {currentBathroomProject.description2}
                       </p>
                     </motion.div>
                   </motion.div>
