@@ -33,7 +33,6 @@ import office1 from '@/assets/office-1.jpg';
 import office2 from '@/assets/office-2.jpg';
 import office3 from '@/assets/office-3.jpg';
 import office4 from '@/assets/office-4.jpg';
-import office5 from '@/assets/office-5.jpg';
 
 interface LightboxProps {
   images: string[];
@@ -259,7 +258,7 @@ const ProjectsContent = () => {
     idea: currentOffice.idea,
     materials: currentOffice.materials,
     features: currentOffice.features,
-    images: [office1, office2, office3, office4, office5],
+    images: [office1, office2, office3, office4],
   };
 
   const libraryProject = {
