@@ -155,26 +155,26 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Bathroom',
       subtitle: 'Elegant minimalism with elements of natural luxury.',
-      description: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
-      features: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
+      description: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
+      features: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
     },
     rus: {
       title: 'Современная luxury ванная комната',
       subtitle: 'Элегантный минимализм с элементами природной роскоши.',
-      description: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
-      features: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
+      description: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
+      features: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
     },
     uzb: {
       title: "Zamonaviy luxury hammom xonasi",
       subtitle: "Tabiiy hashamat elementlari bilan nafis minimalizm.",
-      description: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
-      features: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
+      description: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
+      features: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury ҳаммом хонаси',
       subtitle: 'Табиий ҳашамат элементлари билан нафис минимализм.',
-      description: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
-      features: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
+      description: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
+      features: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
     },
   };
 
