@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import heroImage from '@/assets/hero-house.jpg';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -33,14 +34,13 @@ const HeroSection = () => {
             {t('hero.subtitle')}
           </p>
 
-          {/* CTA */}
           <div className="mt-12 flex flex-wrap gap-4 opacity-0 animate-fade-up delay-400">
             <a href="#services" className="luxury-button">
               {t('hero.services')}
             </a>
-            <a href="/projects" className="luxury-button">
+            <Link to="/projects" className="luxury-button">
               {t('nav.projects')}
-            </a>
+            </Link>
             <a href="#request" className="luxury-button-outline">
               {t('hero.contact')}
             </a>
