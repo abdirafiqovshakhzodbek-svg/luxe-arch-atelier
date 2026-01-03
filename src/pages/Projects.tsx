@@ -291,23 +291,23 @@ const ProjectsContent = () => {
   const mainCategories = [
     {
       id: 'exterior',
-      name: 'Exterior',
+      nameKey: 'category.exterior',
       image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
     },
     {
       id: 'interior',
-      name: 'Interior',
+      nameKey: 'category.interior',
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
       subcategories: [
-        { id: 'bedroom', name: 'Bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop' },
-        { id: 'bathroom', name: 'Bathroom', image: bathroom1, hasDetail: true },
-        { id: 'kitchen', name: 'Kitchen', image: kitchen1, hasDetail: true },
-        { id: 'library', name: 'Library', image: library1, hasDetail: true },
+        { id: 'bedroom', nameKey: 'category.bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop' },
+        { id: 'bathroom', nameKey: 'category.bathroom', image: bathroom1, hasDetail: true },
+        { id: 'kitchen', nameKey: 'category.kitchen', image: kitchen1, hasDetail: true },
+        { id: 'library', nameKey: 'category.library', image: library1, hasDetail: true },
       ],
     },
     {
       id: 'office',
-      name: 'Office',
+      nameKey: 'category.office',
       image: office1,
       hasDetail: true,
     },
@@ -796,13 +796,13 @@ const ProjectsContent = () => {
                     >
                       <img
                         src={sub.image}
-                        alt={sub.name}
+                        alt={t(sub.nameKey)}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <span className="text-sm tracking-widest text-white/90 uppercase font-medium">
-                          {sub.name}
+                          {t(sub.nameKey)}
                         </span>
                         <p className="text-white/50 text-sm mt-1">
                           {sub.hasDetail ? t('projects.viewProject') : t('projects.clickToView')}
@@ -841,13 +841,13 @@ const ProjectsContent = () => {
                     >
                       <img
                         src={category.image}
-                        alt={category.name}
+                        alt={t(category.nameKey)}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <span className="text-xs tracking-widest text-white/70 uppercase">
-                          {category.name}
+                          {t(category.nameKey)}
                         </span>
                         <p className="text-white/50 text-sm mt-1">
                           {category.subcategories ? t('projects.clickToExplore') : category.hasDetail ? t('projects.viewProject') : t('projects.clickToView')}

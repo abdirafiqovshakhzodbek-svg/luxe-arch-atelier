@@ -118,6 +118,15 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.viewProject': 'View project →',
     'projects.clickToView': 'Click to view',
     'projects.clickToExplore': 'Click to explore',
+    
+    // Category Names
+    'category.exterior': 'Exterior',
+    'category.interior': 'Interior',
+    'category.office': 'Office',
+    'category.bedroom': 'Bedroom',
+    'category.bathroom': 'Bathroom',
+    'category.kitchen': 'Kitchen',
+    'category.library': 'Library',
   },
   rus: {
     // Navigation
@@ -228,6 +237,15 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.viewProject': 'Смотреть проект →',
     'projects.clickToView': 'Нажмите для просмотра',
     'projects.clickToExplore': 'Нажмите для изучения',
+    
+    // Category Names
+    'category.exterior': 'Экстерьер',
+    'category.interior': 'Интерьер',
+    'category.office': 'Офис',
+    'category.bedroom': 'Спальня',
+    'category.bathroom': 'Ванная',
+    'category.kitchen': 'Кухня',
+    'category.library': 'Библиотека',
   },
   uzb: {
     // Navigation
@@ -338,6 +356,15 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.viewProject': "Loyihani ko'rish →",
     'projects.clickToView': "Ko'rish uchun bosing",
     'projects.clickToExplore': "O'rganish uchun bosing",
+    
+    // Category Names
+    'category.exterior': 'Eksterer',
+    'category.interior': 'Interer',
+    'category.office': 'Ofis',
+    'category.bedroom': 'Yotoqxona',
+    'category.bathroom': 'Hammom',
+    'category.kitchen': 'Oshxona',
+    'category.library': 'Kutubxona',
   },
   'uzb-cyr': {
     // Navigation
@@ -448,6 +475,15 @@ const translations: Record<Language, Record<string, string>> = {
     'projects.viewProject': 'Лойиҳани кўриш →',
     'projects.clickToView': 'Кўриш учун босинг',
     'projects.clickToExplore': 'Ўрганиш учун босинг',
+    
+    // Category Names
+    'category.exterior': 'Экстерьер',
+    'category.interior': 'Интерьер',
+    'category.office': 'Офис',
+    'category.bedroom': 'Ётоқхона',
+    'category.bathroom': 'Ҳаммом',
+    'category.kitchen': 'Ошхона',
+    'category.library': 'Кутубхона',
   },
 };
 
