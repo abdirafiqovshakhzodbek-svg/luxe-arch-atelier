@@ -127,26 +127,22 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Guest Bathroom',
       subtitle: 'Minimalism and natural stone.',
-      description: 'Organic mirror, soft lighting, console sink creates an atmosphere of comfort and status.',
-      features: 'Compact, aesthetic, premium.',
+      description: 'Organic mirror, soft lighting, console sink creates an atmosphere of comfort and status. Compact, aesthetic, premium.',
     },
     rus: {
       title: 'Современный luxury гостевой санузел',
       subtitle: 'Минимализм и натуральный камень.',
-      description: 'Органичное зеркало, мягкая подсветка, консольная раковина создают атмосферу уюта и статуса.',
-      features: 'Компактно, эстетично, премиально.',
+      description: 'Органичное зеркало, мягкая подсветка, консольная раковина создают атмосферу уюта и статуса. Компактно, эстетично, премиально.',
     },
     uzb: {
       title: 'Zamonaviy luxury mehmon sanuzeli',
       subtitle: "Minimalizm va tabiiy tosh.",
-      description: "Organik oyna, yumshoq yoritish, konsol lavabo qulaylik va maqom muhitini yaratadi.",
-      features: "Ixcham, estetik, premium.",
+      description: "Organik oyna, yumshoq yoritish, konsol lavabo qulaylik va maqom muhitini yaratadi. Ixcham, estetik, premium.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury меҳмон санузели',
       subtitle: 'Минимализм ва табиий тош.',
-      description: 'Органик ойна, юмшоқ ёритиш, консол лаваба қулайлик ва мақом муҳитини яратади.',
-      features: 'Ихчам, эстетик, премиум.',
+      description: 'Органик ойна, юмшоқ ёритиш, консол лаваба қулайлик ва мақом муҳитини яратади. Ихчам, эстетик, премиум.',
     },
   };
 
@@ -155,26 +151,22 @@ const ProjectsContent = () => {
     eng: {
       title: 'Modern Luxury Bathroom',
       subtitle: 'Elegant minimalism with elements of natural luxury.',
-      description: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
-      features: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
+      description: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury. Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
     },
     rus: {
       title: 'Современная luxury ванная комната',
       subtitle: 'Элегантный минимализм с элементами природной роскоши.',
-      description: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
-      features: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
+      description: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury. Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
     },
     uzb: {
       title: "Zamonaviy luxury hammom xonasi",
       subtitle: "Tabiiy hashamat elementlari bilan nafis minimalizm.",
-      description: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
-      features: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
+      description: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi. Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
     },
     'uzb-cyr': {
       title: 'Замонавий luxury ҳаммом хонаси',
       subtitle: 'Табиий ҳашамат элементлари билан нафис минимализм.',
-      description: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
-      features: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
+      description: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади. Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
     },
   };
 
@@ -186,14 +178,12 @@ const ProjectsContent = () => {
       title: currentBathroom1.title,
       subtitle: currentBathroom1.subtitle,
       description: currentBathroom1.description,
-      features: currentBathroom1.features,
       images: [bathroom1, bathroom2, bathroom3, bathroom4, bathroom5],
     },
     {
       title: currentBathroom2.title,
       subtitle: currentBathroom2.subtitle,
       description: currentBathroom2.description,
-      features: currentBathroom2.features,
       images: [bathroom2_1, bathroom2_2, bathroom2_3, bathroom2_4, bathroom2_5, bathroom2_6],
     },
   ];
@@ -347,18 +337,6 @@ const ProjectsContent = () => {
                     >
                       <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
                         {currentBathroomProject.description}
-                      </p>
-                    </motion.div>
-                    
-                    {/* Features */}
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.4 }}
-                      className="mb-8"
-                    >
-                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
-                        {currentBathroomProject.features}
                       </p>
                     </motion.div>
                   </motion.div>
