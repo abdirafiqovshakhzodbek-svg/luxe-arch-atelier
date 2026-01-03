@@ -3,16 +3,104 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import kitchen1 from '@/assets/kitchen-1.jpg';
 import kitchen2 from '@/assets/kitchen-2.jpg';
 import kitchen3 from '@/assets/kitchen-3.jpg';
 import kitchen4 from '@/assets/kitchen-4.jpg';
 
+interface LightboxProps {
+  images: string[];
+  currentIndex: number;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}
+
+const Lightbox = ({ images, currentIndex, onClose, onPrev, onNext }: LightboxProps) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+      onClick={onClose}
+    >
+      {/* Close Button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-50 p-3 text-white/70 hover:text-white transition-colors"
+      >
+        <X className="w-8 h-8" />
+      </button>
+
+      {/* Previous Button */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white transition-colors bg-white/10 rounded-full hover:bg-white/20"
+        >
+          <ChevronLeft className="w-8 h-8" />
+        </button>
+      )}
+
+      {/* Next Button */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 text-white/70 hover:text-white transition-colors bg-white/10 rounded-full hover:bg-white/20"
+        >
+          <ChevronRight className="w-8 h-8" />
+        </button>
+      )}
+
+      {/* Image */}
+      <motion.img
+        key={currentIndex}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        src={images[currentIndex]}
+        alt="Project image"
+        className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+        onClick={(e) => e.stopPropagation()}
+      />
+
+      {/* Image Counter */}
+      {images.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 text-sm tracking-widest">
+          {currentIndex + 1} / {images.length}
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
 const ProjectsContent = () => {
   const { t } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: string[], index: number) => {
+    setLightboxImages(images);
+    setLightboxIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImages([]);
+    setLightboxIndex(0);
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % lightboxImages.length);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length);
+  };
 
   const kitchenProject = {
     title: 'Современная кухня',
@@ -60,6 +148,15 @@ const ProjectsContent = () => {
     } else {
       setActiveCategory(null);
     }
+  };
+
+  // Get all category images for lightbox
+  const getCategoryImages = () => {
+    return mainCategories.map(c => c.image);
+  };
+
+  const getSubcategoryImages = () => {
+    return interiorCategory?.subcategories?.map(s => s.image) || [];
   };
 
   return (
@@ -148,14 +245,19 @@ const ProjectsContent = () => {
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                      className="group relative overflow-hidden rounded-2xl aspect-[4/3]"
+                      onClick={() => openLightbox(kitchenProject.images, index)}
+                      className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
                     >
                       <img
                         src={img}
                         alt={`Kitchen design ${index + 1}`}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to view
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>
@@ -187,8 +289,8 @@ const ProjectsContent = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      onClick={() => handleSubcategoryClick(sub.id, sub.hasDetail)}
-                      className={`group relative overflow-hidden rounded-2xl aspect-[4/3] ${sub.hasDetail ? 'cursor-pointer' : 'cursor-default'}`}
+                      onClick={() => sub.hasDetail ? handleSubcategoryClick(sub.id, sub.hasDetail) : openLightbox(getSubcategoryImages(), index)}
+                      className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
                     >
                       <img
                         src={sub.image}
@@ -200,9 +302,9 @@ const ProjectsContent = () => {
                         <span className="text-sm tracking-widest text-white/90 uppercase font-medium">
                           {sub.name}
                         </span>
-                        {sub.hasDetail && (
-                          <p className="text-white/50 text-sm mt-1">View project →</p>
-                        )}
+                        <p className="text-white/50 text-sm mt-1">
+                          {sub.hasDetail ? 'View project →' : 'Click to view'}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
@@ -224,8 +326,8 @@ const ProjectsContent = () => {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: index * 0.1 }}
-                      onClick={() => category.subcategories && setActiveCategory(category.id)}
-                      className={`group relative overflow-hidden rounded-2xl aspect-[4/3] ${category.subcategories ? 'cursor-pointer' : 'cursor-default'}`}
+                      onClick={() => category.subcategories ? setActiveCategory(category.id) : openLightbox(getCategoryImages(), index)}
+                      className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer"
                     >
                       <img
                         src={category.image}
@@ -237,9 +339,9 @@ const ProjectsContent = () => {
                         <span className="text-xs tracking-widest text-white/70 uppercase">
                           {category.name}
                         </span>
-                        {category.subcategories && (
-                          <p className="text-white/50 text-sm mt-1">Click to explore</p>
-                        )}
+                        <p className="text-white/50 text-sm mt-1">
+                          {category.subcategories ? 'Click to explore' : 'Click to view'}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
@@ -250,6 +352,19 @@ const ProjectsContent = () => {
         </div>
       </main>
       <Footer />
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxImages.length > 0 && (
+          <Lightbox
+            images={lightboxImages}
+            currentIndex={lightboxIndex}
+            onClose={closeLightbox}
+            onPrev={prevImage}
+            onNext={nextImage}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
