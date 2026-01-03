@@ -19,6 +19,16 @@ import bathroom2_3 from '@/assets/bathroom-2-3.png';
 import bathroom2_4 from '@/assets/bathroom-2-4.png';
 import bathroom2_5 from '@/assets/bathroom-2-5.png';
 import bathroom2_6 from '@/assets/bathroom-2-6.png';
+import library1 from '@/assets/library-1.png';
+import library2 from '@/assets/library-2.png';
+import library3 from '@/assets/library-3.png';
+import library4 from '@/assets/library-4.png';
+import library5 from '@/assets/library-5.png';
+import library6 from '@/assets/library-6.png';
+import library7 from '@/assets/library-7.png';
+import library8 from '@/assets/library-8.png';
+import library9 from '@/assets/library-9.png';
+import library10 from '@/assets/library-10.png';
 
 interface LightboxProps {
   images: string[];
@@ -178,8 +188,45 @@ const ProjectsContent = () => {
     },
   };
 
+  // Library Project
+  const libraryContent = {
+    eng: {
+      title: 'Modern Luxury Library',
+      subtitle: 'Elegant minimalism with elements of natural luxury.',
+      description1: 'Natural stone, warm palette and soft lighting create an atmosphere of comfort and private luxury.',
+      description2: 'Hidden storage systems, scenario LED lighting and walk-in shower create a clean, status and thoughtful space.',
+    },
+    rus: {
+      title: 'Современная luxury библиотека',
+      subtitle: 'Элегантный минимализм с элементами природной роскоши.',
+      description1: 'Натуральный камень, тёплая палитра и мягкая подсветка создают атмосферу уюта и приватного luxury.',
+      description2: 'Скрытые системы хранения, сценарное LED-освещение и walk-in душевая формируют чистое, статусное и продуманное пространство.',
+    },
+    uzb: {
+      title: "Zamonaviy luxury kutubxona",
+      subtitle: "Tabiiy hashamat elementlari bilan nafis minimalizm.",
+      description1: "Tabiiy tosh, iliq rang palitrasi va yumshoq yoritish qulaylik va xususiy hashamat muhitini yaratadi.",
+      description2: "Yashirin saqlash tizimlari, ssenariy LED yoritish va walk-in dush toza, statusli va o'ylangan makonni shakllantiradi.",
+    },
+    'uzb-cyr': {
+      title: 'Замонавий luxury кутубхона',
+      subtitle: 'Табиий ҳашамат элементлари билан нафис минимализм.',
+      description1: 'Табиий тош, илиқ ранг палитраси ва юмшоқ ёритиш қулайлик ва хусусий ҳашамат муҳитини яратади.',
+      description2: 'Яширин сақлаш тизимлари, сценарий LED ёритиш ва walk-in душ тоза, статусли ва ўйланган маконни шакллантиради.',
+    },
+  };
+
   const currentBathroom1 = bathroomContent1[language];
   const currentBathroom2 = bathroomContent2[language];
+  const currentLibrary = libraryContent[language];
+
+  const libraryProject = {
+    title: currentLibrary.title,
+    subtitle: currentLibrary.subtitle,
+    description1: currentLibrary.description1,
+    description2: currentLibrary.description2,
+    images: [library1, library2, library3, library4, library5, library6, library7, library8, library9, library10],
+  };
   
   const bathroomProjects = [
     {
@@ -214,7 +261,7 @@ const ProjectsContent = () => {
         { id: 'bedroom', name: 'Bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop' },
         { id: 'bathroom', name: 'Bathroom', image: bathroom1, hasDetail: true },
         { id: 'kitchen', name: 'Kitchen', image: kitchen1, hasDetail: true },
-        { id: 'library', name: 'Library', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop' },
+        { id: 'library', name: 'Library', image: library1, hasDetail: true },
       ],
     },
     {
@@ -464,6 +511,101 @@ const ProjectsContent = () => {
                     </motion.div>
                   ))}
                 </div>
+              </motion.div>
+            ) : activeSubcategory === 'library' ? (
+              <motion.div
+                key="library-detail"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Back Button */}
+                <button
+                  onClick={handleBack}
+                  className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
+                >
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <span>Back to Interior</span>
+                </button>
+
+                {/* Project Header */}
+                <div className="mb-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="max-w-4xl"
+                  >
+                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light">
+                      {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-3 tracking-tight">
+                      {libraryProject.title}
+                    </h2>
+                    
+                    {/* Elegant subtitle */}
+                    <p className="text-foreground/60 text-xl md:text-2xl italic font-light mb-8 leading-relaxed">
+                      {libraryProject.subtitle}
+                    </p>
+                    
+                    {/* Description Line 1 */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="mb-4"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {libraryProject.description1}
+                      </p>
+                    </motion.div>
+                    
+                    {/* Description Line 2 */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="mb-8"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {libraryProject.description2}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Image Gallery - Masonry style */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {libraryProject.images.map((img, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.1 + index * 0.08 }}
+                      onClick={() => openLightbox(libraryProject.images, index)}
+                      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+                        index === 0 ? 'md:col-span-2 lg:col-span-2 aspect-[16/10]' : 'aspect-[3/4]'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Library design ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to view
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
               </motion.div>
             ) : activeCategory === 'interior' && interiorCategory?.subcategories ? (
               <motion.div
