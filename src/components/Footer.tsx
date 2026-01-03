@@ -24,7 +24,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#home" className="font-display text-2xl tracking-[0.2em] font-light text-foreground">
-              Pixel Aurora
+              Pixel Aurora Architect
             </a>
             <p className="mt-6 text-muted-foreground font-light leading-relaxed max-w-md">
               {t('footer.brand.description')}
