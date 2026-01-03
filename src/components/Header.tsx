@@ -79,9 +79,9 @@ const Header = () => {
       <div className="luxury-container">
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <a href="#home" className="font-display text-xl md:text-2xl tracking-[0.2em] font-light text-foreground">
+          <Link to="/" className="font-display text-xl md:text-2xl tracking-[0.2em] font-light text-foreground">
             Pixel Aurora Architect
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10">

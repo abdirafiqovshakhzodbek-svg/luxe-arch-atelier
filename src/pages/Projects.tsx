@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
@@ -349,13 +350,13 @@ const ProjectsContent = () => {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <a
-              href="/"
+            <Link
+              to="/"
               className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span>{t('projects.backToHome')}</span>
-            </a>
+            </Link>
           </motion.div>
 
           {/* Header */}
