@@ -19,6 +19,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Contacts',
     'nav.request': 'Submit Request',
     
+    // Projects Page
+    'projects.label': 'Portfolio',
+    'projects.title': 'Our Projects',
+    'projects.description': 'Explore our portfolio of architectural visualizations, interior designs, and 3D projects that showcase our commitment to precision and aesthetics.',
+    
     // Hero
     'hero.title1': 'Architecture',
     'hero.title2': 'Reimagined',
@@ -115,6 +120,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.gallery': 'Галерея',
     'nav.contact': 'Контакты',
     'nav.request': 'Оставить заявку',
+    
+    // Projects Page
+    'projects.label': 'Портфолио',
+    'projects.title': 'Наши проекты',
+    'projects.description': 'Изучите наше портфолио архитектурных визуализаций, интерьерных дизайнов и 3D-проектов, демонстрирующих нашу приверженность точности и эстетике.',
     
     // Hero
     'hero.title1': 'Архитектура',
@@ -213,6 +223,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Aloqa',
     'nav.request': "So'rov qoldirish",
     
+    // Projects Page
+    'projects.label': 'Portfolio',
+    'projects.title': 'Bizning loyihalar',
+    'projects.description': "Aniqlik va estetikaga bo'lgan sadoqatimizni namoyish etuvchi arxitektura vizualizatsiyalari, interer dizaynlari va 3D-loyihalar portfoliomizni ko'rib chiqing.",
+    
     // Hero
     'hero.title1': 'Arxitektura',
     'hero.title2': 'Qayta tasavvur',
@@ -309,6 +324,11 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.gallery': 'Галерея',
     'nav.contact': 'Алоқа',
     'nav.request': 'Сўров қолдириш',
+    
+    // Projects Page
+    'projects.label': 'Портфолио',
+    'projects.title': 'Бизнинг лойиҳалар',
+    'projects.description': 'Аниқлик ва эстетикага бўлган содиқлигимизни намойиш этувчи архитектура визуализациялари, интерер дизайнлари ва 3D-лойиҳалар портфолиомизни кўриб чиқинг.',
     
     // Hero
     'hero.title1': 'Архитектура',
