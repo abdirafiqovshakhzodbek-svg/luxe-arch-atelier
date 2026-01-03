@@ -114,6 +114,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Projects Navigation
     'projects.backToCategories': 'Back to Categories',
     'projects.backToInterior': 'Back to Interior',
+    'projects.backToHome': 'Back to Home',
     'projects.interiorCategories': 'Interior Categories',
     'projects.viewProject': 'View project →',
     'projects.clickToView': 'Click to view',
@@ -233,6 +234,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Projects Navigation
     'projects.backToCategories': 'Назад к категориям',
     'projects.backToInterior': 'Назад к Интерьеру',
+    'projects.backToHome': 'Назад на главную',
     'projects.interiorCategories': 'Категории интерьера',
     'projects.viewProject': 'Смотреть проект →',
     'projects.clickToView': 'Нажмите для просмотра',
@@ -352,6 +354,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Projects Navigation
     'projects.backToCategories': 'Kategoriyalarga qaytish',
     'projects.backToInterior': 'Interyerga qaytish',
+    'projects.backToHome': 'Bosh sahifaga qaytish',
     'projects.interiorCategories': 'Interer kategoriyalari',
     'projects.viewProject': "Loyihani ko'rish →",
     'projects.clickToView': "Ko'rish uchun bosing",
@@ -471,6 +474,7 @@ const translations: Record<Language, Record<string, string>> = {
     // Projects Navigation
     'projects.backToCategories': 'Категорияларга қайтиш',
     'projects.backToInterior': 'Интерьерга қайтиш',
+    'projects.backToHome': 'Бош саҳифага қайтиш',
     'projects.interiorCategories': 'Интерьер категориялари',
     'projects.viewProject': 'Лойиҳани кўриш →',
     'projects.clickToView': 'Кўриш учун босинг',

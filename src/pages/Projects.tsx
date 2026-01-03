@@ -342,6 +342,22 @@ const ProjectsContent = () => {
       <Header />
       <main className="pt-32 pb-20">
         <div className="luxury-container">
+          {/* Back to Home Button */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-foreground/70 hover:text-foreground transition-colors group"
+            >
+              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+              <span>{t('projects.backToHome')}</span>
+            </a>
+          </motion.div>
+
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
