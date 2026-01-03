@@ -110,6 +110,14 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.captcha': 'Security check',
     'contact.captchaPlaceholder': 'Your answer',
     'contact.phonePlaceholder': '+998 XX XXX XX XX',
+    
+    // Projects Navigation
+    'projects.backToCategories': 'Back to Categories',
+    'projects.backToInterior': 'Back to Interior',
+    'projects.interiorCategories': 'Interior Categories',
+    'projects.viewProject': 'View project →',
+    'projects.clickToView': 'Click to view',
+    'projects.clickToExplore': 'Click to explore',
   },
   rus: {
     // Navigation
@@ -212,6 +220,14 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.captcha': 'Проверка безопасности',
     'contact.captchaPlaceholder': 'Ваш ответ',
     'contact.phonePlaceholder': '+998 XX XXX XX XX',
+    
+    // Projects Navigation
+    'projects.backToCategories': 'Назад к категориям',
+    'projects.backToInterior': 'Назад к Интерьеру',
+    'projects.interiorCategories': 'Категории интерьера',
+    'projects.viewProject': 'Смотреть проект →',
+    'projects.clickToView': 'Нажмите для просмотра',
+    'projects.clickToExplore': 'Нажмите для изучения',
   },
   uzb: {
     // Navigation
@@ -314,6 +330,14 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.captcha': 'Xavfsizlik tekshiruvi',
     'contact.captchaPlaceholder': 'Javobingiz',
     'contact.phonePlaceholder': '+998 XX XXX XX XX',
+    
+    // Projects Navigation
+    'projects.backToCategories': 'Kategoriyalarga qaytish',
+    'projects.backToInterior': 'Interyerga qaytish',
+    'projects.interiorCategories': 'Interer kategoriyalari',
+    'projects.viewProject': "Loyihani ko'rish →",
+    'projects.clickToView': "Ko'rish uchun bosing",
+    'projects.clickToExplore': "O'rganish uchun bosing",
   },
   'uzb-cyr': {
     // Navigation
@@ -416,6 +440,14 @@ const translations: Record<Language, Record<string, string>> = {
     'contact.captcha': 'Хавфсизлик текшируви',
     'contact.captchaPlaceholder': 'Жавобингиз',
     'contact.phonePlaceholder': '+998 XX XXX XX XX',
+    
+    // Projects Navigation
+    'projects.backToCategories': 'Категорияларга қайтиш',
+    'projects.backToInterior': 'Интерьерга қайтиш',
+    'projects.interiorCategories': 'Интерьер категориялари',
+    'projects.viewProject': 'Лойиҳани кўриш →',
+    'projects.clickToView': 'Кўриш учун босинг',
+    'projects.clickToExplore': 'Ўрганиш учун босинг',
   },
 };
 
