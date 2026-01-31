@@ -47,11 +47,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-0 animate-fade-in delay-600">
-          <span className="text-xs tracking-[0.2em] uppercase text-muted-foreground">{t('hero.scroll')}</span>
-          <div className="w-px h-12 bg-gradient-to-b from-muted-foreground to-transparent" />
-        </div>
       </div>
     </section>
   );
