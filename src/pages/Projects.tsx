@@ -5,6 +5,11 @@ import Footer from '@/components/Footer';
 import { LanguageProvider, useLanguage } from '@/contexts/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import bedroom1 from '@/assets/bedroom-1.jpg';
+import bedroom2 from '@/assets/bedroom-2.jpg';
+import bedroom3 from '@/assets/bedroom-3.jpg';
+import bedroom4 from '@/assets/bedroom-4.jpg';
+import bedroom5 from '@/assets/bedroom-5.jpg';
 import kitchen1 from '@/assets/kitchen-1.jpg';
 import kitchen2 from '@/assets/kitchen-2.jpg';
 import kitchen3 from '@/assets/kitchen-3.jpg';
@@ -193,6 +198,34 @@ const ProjectsContent = () => {
     },
   };
 
+  // Bedroom Project
+  const bedroomContent = {
+    eng: {
+      title: 'Modern Luxury Bedroom',
+      subtitle: 'Warmth, refinement and absolute comfort.',
+      description1: 'Natural wood panels, warm LED lighting and thoughtful layout create a space where every detail works in harmony.',
+      description2: 'A floating bed, art posters and golden bird sculptures give the room a distinctive character — masculine, refined and contemporary.',
+    },
+    rus: {
+      title: 'Современная luxury спальня',
+      subtitle: 'Теплота, утончённость и абсолютный комфорт.',
+      description1: 'Натуральные деревянные панели, тёплая LED-подсветка и продуманная планировка создают пространство, где каждая деталь работает в гармонии.',
+      description2: 'Парящая кровать, арт-постеры и золотые скульптуры птиц придают комнате особый характер — мужской, утончённый и современный.',
+    },
+    uzb: {
+      title: "Zamonaviy luxury yotoqxona",
+      subtitle: "Issiqlik, nafislik va mutlaq qulaylik.",
+      description1: "Tabiiy yog'och panellar, iliq LED yoritish va o'ylangan rejalashtirish har bir detal uyg'unlikda ishlaydigan makon yaratadi.",
+      description2: "Suzuvchi karavot, art-posterlar va oltin qush haykallari xonaga o'ziga xos xarakter beradi — erkakcha, nozik va zamonaviy.",
+    },
+    'uzb-cyr': {
+      title: 'Замонавий luxury ётоқхона',
+      subtitle: 'Иссиқлик, нафислик ва мутлақ қулайлик.',
+      description1: 'Табиий ёғоч панеллар, илиқ LED ёритиш ва ўйланган режалаштириш ҳар бир детал уйғунликда ишлайдиган макон яратади.',
+      description2: 'Сузувчи каравот, арт-постерлар ва олтин қуш ҳайкаллари хонага ўзига хос характер беради — эркакча, нозик ва замонавий.',
+    },
+  };
+
   // Library Project
   const libraryContent = {
     eng: {
@@ -249,10 +282,19 @@ const ProjectsContent = () => {
     },
   };
 
+  const currentBedroom = bedroomContent[language];
   const currentBathroom1 = bathroomContent1[language];
   const currentBathroom2 = bathroomContent2[language];
   const currentLibrary = libraryContent[language];
   const currentOffice = officeContent[language];
+
+  const bedroomProject = {
+    title: currentBedroom.title,
+    subtitle: currentBedroom.subtitle,
+    description1: currentBedroom.description1,
+    description2: currentBedroom.description2,
+    images: [bedroom1, bedroom2, bedroom3, bedroom4, bedroom5],
+  };
 
   const officeProject = {
     title: currentOffice.title,
@@ -300,7 +342,7 @@ const ProjectsContent = () => {
       nameKey: 'category.interior',
       image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
       subcategories: [
-        { id: 'bedroom', nameKey: 'category.bedroom', image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop' },
+        { id: 'bedroom', nameKey: 'category.bedroom', image: bedroom1, hasDetail: true },
         { id: 'bathroom', nameKey: 'category.bathroom', image: bathroom1, hasDetail: true },
         { id: 'kitchen', nameKey: 'category.kitchen', image: kitchen1, hasDetail: true },
         { id: 'library', nameKey: 'category.library', image: library1, hasDetail: true },
@@ -478,6 +520,95 @@ const ProjectsContent = () => {
                       <img
                         src={img}
                         alt={`Bathroom design ${index + 1}`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="text-white text-sm tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                          Click to view
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            ) : activeSubcategory === 'bedroom' ? (
+              <motion.div
+                key="bedroom-detail"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -30 }}
+                transition={{ duration: 0.5 }}
+              >
+                {/* Back Button */}
+                <button
+                  onClick={handleBack}
+                  className="flex items-center gap-2 text-foreground/70 hover:text-foreground mb-12 transition-colors group"
+                >
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <span>{t('projects.backToInterior')}</span>
+                </button>
+
+                {/* Project Header */}
+                <div className="mb-16">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="max-w-4xl"
+                  >
+                    <span className="text-sm tracking-[0.3em] text-primary/80 uppercase font-light">
+                      {language === 'eng' ? 'Project' : language === 'rus' ? 'Проект' : language === 'uzb-cyr' ? 'Лойиҳа' : 'Loyiha'}
+                    </span>
+                    <h2 className="text-3xl md:text-5xl font-light mt-4 mb-3 tracking-tight">
+                      {bedroomProject.title}
+                    </h2>
+                    <p className="text-foreground/60 text-xl md:text-2xl italic font-light mb-8 leading-relaxed">
+                      {bedroomProject.subtitle}
+                    </p>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="mb-4"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {bedroomProject.description1}
+                      </p>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="mb-8"
+                    >
+                      <p className="text-lg text-foreground/70 font-light leading-relaxed border-l-2 border-primary/30 pl-6">
+                        {bedroomProject.description2}
+                      </p>
+                    </motion.div>
+                  </motion.div>
+                </div>
+
+                {/* Image Gallery */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                  {bedroomProject.images.map((img, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.1 + index * 0.08 }}
+                      onClick={() => openLightbox(bedroomProject.images, index)}
+                      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+                        index === 0 ? 'md:col-span-2 lg:col-span-2 aspect-[16/10]' : 'aspect-[3/4]'
+                      }`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Bedroom design ${index + 1}`}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
